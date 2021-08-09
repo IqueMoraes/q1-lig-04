@@ -20,6 +20,7 @@ function createDiv(container,className){
         container.appendChild(celula);
 };
 
+
 function createLayout(){
     for(let row in layout){
         const container = document.createElement('div');
@@ -29,6 +30,8 @@ function createLayout(){
             let print = layout[row][column];
             if(print === 'l'){
                 createDiv(container,'espaco');
+
+               // container.id="column"
             }
         }
     }
@@ -36,6 +39,28 @@ function createLayout(){
 createLayout();
 //Funções 
 
+const click = document.addEventListener("click", (event) =>{
+    let keyName = event.srcElement.id;
+    console.log(keyName)
+})
+/*
+ asignar id pra criar columnas
+ */
+/*
+ listener de click
+ */
+const lineas = () =>{
+    const fila = document.getElementById("container")
+    let contFila = fila.childNodes
+    let bloques;
+    for(let i = 0; i < contFila.length; i++){
+        bloques = contFila[i].childNodes
+        for(let j = 0; j < bloques.length; j++){
+            bloques[j].id = "columna"+(j+1)
+        }
+    }
+}
+lineas();
 //Event Listener
 const div = document.querySelector('.espaco');
 let change = true;
@@ -58,4 +83,5 @@ div.addEventListener('click', () =>{
         change = true;
     }
 });
+
 //Event Listener
