@@ -1,0 +1,30 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 330px;
+    margin-top: 110px;
+}
+
+.container{
+    display: flex;
+}
+
+.espaco{
+    width: 60px;
+    height: 60px;
+    border: 2px solid cyan;
+}
+
+.red{
+    width: 30px;
+    height: 30px;
+    background: darkred;
+    border-radius: 50%;
+}
+
+.black{
+    width: 30px;
+    height: 30px;
+    background: black;
+    border-radius: 50%;
+}
