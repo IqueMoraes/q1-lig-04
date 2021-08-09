@@ -40,7 +40,7 @@ createLayout();
 //Funções 
 
 const click = document.addEventListener("click", (event) =>{
-    let keyName = event.target;
+    let keyName = event.srcElement.id;
 
     console.log(keyName)
 })
