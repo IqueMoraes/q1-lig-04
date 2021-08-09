@@ -54,6 +54,7 @@ const lineas = () =>{
     let contFila = fila.childNodes
     let bloques;
     for(let i = 0; i < contFila.length; i++){
+        contFila[i].id = "filera"+(i+1);
         bloques = contFila[i].childNodes
         for(let j = 0; j < bloques.length; j++){
             bloques[j].id = "columna"+(j+1)
