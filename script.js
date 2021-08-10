@@ -37,15 +37,34 @@ function createLayout(){
     }
 }
 createLayout();
+
 //Funções 
 
+const bloques = () => {
+    const blocos = document.createElement("div")
+    blocos.classList.add("black")
+    let keyName = event.srcElement.id;
+    const destino = document.getElementById(keyName)
+    destino.appendChild(blocos);
+}
+//////////////////////
+const destino = () => {
+    const destin = document.getElementById("container")
+    console.log(destin.children)
+    //let final = [];
+    //for(let i = 0; i < )
+}
+////////////////////////
 const click = document.addEventListener("click", (event) =>{
     let keyName = event.srcElement.id;
-    console.log(keyName)
+    let filaName = event.srcElement.parentNode.id;
+  //  console.log(keyName)
+  //  console.log(filaName)
+    const fila = document.getElementById(filaName)
+    console.log(fila.id)
+    bloques( );
+    destino();
 })
-/*
- asignar id pra criar columnas
- */
 /*
  listener de click
  */
@@ -54,6 +73,7 @@ const lineas = () =>{
     let contFila = fila.childNodes
     let bloques;
     for(let i = 0; i < contFila.length; i++){
+        contFila[i].id = "filera"+(i+1)
         bloques = contFila[i].childNodes
         for(let j = 0; j < bloques.length; j++){
             bloques[j].id = "columna"+(j+1)
@@ -62,7 +82,7 @@ const lineas = () =>{
 }
 lineas();
 //Event Listener
-const div = document.querySelector('.espaco');
+/*const div = document.querySelector('.espaco');
 let change = true;
 
 div.addEventListener('click', () =>{
@@ -83,5 +103,5 @@ div.addEventListener('click', () =>{
         change = true;
     }
 });
-
+*/
 //Event Listener
