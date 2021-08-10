@@ -40,6 +40,10 @@ createLayout();
 
 //Funções 
 
+const vert = () =>{
+    const vertical = document.getElementById()
+    console.log()
+}
 const bloques = () => {
     const blocos = document.createElement("div")
     blocos.classList.add("black")
@@ -64,6 +68,7 @@ const click = document.addEventListener("click", (event) =>{
     console.log(fila.id)
     bloques( );
     destino();
+    vert();
 })
 /*
  listener de click
