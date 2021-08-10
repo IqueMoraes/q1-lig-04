@@ -32,18 +32,13 @@ body{
     width: 46px;
     height: 70px;
     border: 2px solid cyan;
-    display:flex;
-    text-align:center;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
 }
-.jogo{
-    width: 30px;
-    height: 30px;
-    border: 1px solid black; 
-    border-radius: 50%;
-  
+
+.celula{
+    width: 46px;
+    height: 70px;
+}
+
 .red{
     width: 30px;
     height: 30px;
@@ -79,4 +74,3 @@ body{
 
     }
 }
-
