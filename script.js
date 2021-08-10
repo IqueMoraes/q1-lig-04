@@ -92,11 +92,40 @@ const bloques = (cor, numero) => {
 //////////////////////
 const destino = () => {
     const destin = document.getElementById("container")
-    // console.log(destin.children)
+
+   //  console.log(destin.children)
     //let final = [];
     //for(let i = 0; i < )
 }
 ////////////////////////
+const position = () =>{
+    let final = []
+    const fila = document.getElementById("container")
+    let contFila = fila.childNodes
+    let content;
+    let filho;
+       for(let i = 0; i < contFila.length; i++){
+          final[i]=[];
+           content = contFila[i].childNodes;
+         for(let j = 0; j < content.length; j++){
+             filho = content[j].lastChild
+                if(content[j].childElementCount < 1){
+                    final[i][j] = 0
+                }
+             if(content[j].childElementCount > 0 && filho.className == "black"){
+                  final[i][j] = "black"
+                }
+                
+             if(content[j].childElementCount > 0 && filho.className == "red"){
+                  final[i][j] = "red"
+                }
+            }
+        }
+  console.table(final)
+    return final
+}
+
+
 mainContainer.addEventListener("click", (event) =>{
     
     let keyName = event.target.id;
@@ -105,27 +134,32 @@ mainContainer.addEventListener("click", (event) =>{
   //  console.log(keyName)
   //  console.log(filaName)
     const fila = document.getElementById(filaName)
-    // console.log(fila.id)
-    if(player1 === true){
+
+   if(player1 === true){
         bloques("black", numero);
     }else {
     bloques("red", numero);
     }
 
+  //  mapa();
+    position();
     destino();
 })
 /*
  listener de click
  */
 const lineas = () =>{
+    let state = false;
     const fila = document.getElementById("container")
     let contFila = fila.childNodes
     let bloques;
+    let conteudo;
+    let final = [];
     for(let i = 0; i < contFila.length; i++){
         contFila[i].id = "filera"+(i+1)
         bloques = contFila[i].childNodes
         for(let j = 0; j < bloques.length; j++){
-            bloques[j].id = "columna"+(j+1)
+            bloques[j].id = "columna"+(j+1);
         }
     }
 }
