@@ -39,30 +39,49 @@ function createLayout(){
 createLayout();
 //Funções 
 
+let player1 = true;
 
-const bloques = () => {
-    const blocos = document.createElement("div")
-    blocos.classList.add("black")
-    let keyName = event.srcElement.id;
-    const destino = document.getElementById(keyName)
-    destino.appendChild(blocos);
+const bloques = (cor, numero) => {
+    const coluna = document.querySelectorAll("#columna" + `${numero}`)
+
+    for(let i=5; i>=0; i--){
+        if(coluna[i].childElementCount === 0){
+            const blocos = document.createElement("div")
+            blocos.classList.add(cor)
+            coluna[i].appendChild(blocos)
+            if(player1 === true){
+                player1=false
+            }else{
+                player1=true
+            }
+            break
+        }
+    }
+
 }
 //////////////////////
 const destino = () => {
     const destin = document.getElementById("container")
-    console.log(destin.children)
+    // console.log(destin.children)
     //let final = [];
     //for(let i = 0; i < )
 }
 ////////////////////////
-const click = document.addEventListener("click", (event) =>{
-    let keyName = event.srcElement.id;
+mainContainer.addEventListener("click", (event) =>{
+    
+    let keyName = event.target.id;
+    let numero = parseInt(keyName[keyName.length -1])
     let filaName = event.srcElement.parentNode.id;
   //  console.log(keyName)
   //  console.log(filaName)
     const fila = document.getElementById(filaName)
     console.log(fila.id)
-    bloques( );
+    if(player1 === true){
+        bloques("black", numero);
+    }else {
+    bloques("red", numero);
+    }
+
     destino();
 })
 /*
