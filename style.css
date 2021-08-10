@@ -54,7 +54,8 @@ body{
 .black{
     width: 30px;
     height: 30px;
-    background: white;
+    background: black;
+    border:1px solid white;
     border-radius: 50%;
 }
 
