@@ -37,11 +37,31 @@ function createLayout(){
     }
 }
 createLayout();
+
+
+const bloques = () => {
+    const blocos = document.createElement("div")
+    blocos.classList.add("jogo")
+    let keyName = event.srcElement.id;
+    const destino = document.getElementById(keyName)
+    destino.appendChild(blocos);
+  //  console.log(blocos)
+    classes();
+}
+const classes = () => {
+  const feito = document.querySelector(".jogo");
+    console.log(feito)
+    let classes = ["red", "black"]
+   // feito.classList.add(classes[0])
+    
+}
+
 //Funções 
 
 const click = document.addEventListener("click", (event) =>{
     let keyName = event.srcElement.id;
     console.log(keyName)
+    bloques();
 })
 /*
  asignar id pra criar columnas
@@ -62,7 +82,7 @@ const lineas = () =>{
 }
 lineas();
 //Event Listener
-const div = document.querySelector('.espaco');
+/*const div = document.querySelector('.espaco');
 let change = true;
 
 div.addEventListener('click', () =>{
@@ -83,5 +103,5 @@ div.addEventListener('click', () =>{
         change = true;
     }
 });
-
+*/
 //Event Listener
