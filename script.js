@@ -90,14 +90,6 @@ const bloques = (cor, numero) => {
 
 }
 //////////////////////
-const destino = () => {
-    const destin = document.getElementById("container")
-
-   //  console.log(destin.children)
-    //let final = [];
-    //for(let i = 0; i < )
-}
-////////////////////////
 const position = () =>{
     let final = []
     const fila = document.getElementById("container")
@@ -125,29 +117,26 @@ const position = () =>{
     return final
 }
 
-
+/*
+ listener de click
+ */
 mainContainer.addEventListener("click", (event) =>{
     
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
     let filaName = event.srcElement.parentNode.id;
-  //  console.log(keyName)
-  //  console.log(filaName)
     const fila = document.getElementById(filaName)
 
-   if(player1 === true){
+    if(player1 === true){
+
         bloques("black", numero);
     }else {
     bloques("red", numero);
     }
-
-  //  mapa();
     position();
     destino();
 })
-/*
- listener de click
- */
+
 const lineas = () =>{
     let state = false;
     const fila = document.getElementById("container")
