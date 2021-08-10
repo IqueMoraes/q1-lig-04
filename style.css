@@ -1,8 +1,27 @@
+body{
+    background-image: url(img/Dungeon.jpg);
+    background-size: cover;
+}
+
+#footer{
+    text-align: center;
+    font-size: 1em;
+    background: darkred;
+    margin-top: 16px;
+    color: white;
+}
+
+#flex{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #container{
     display: flex;
     flex-direction: column;
-    margin-left: 330px;
-    margin-top: 110px;
+    margin-top: 100px;
 }
 
 .container{
@@ -10,9 +29,14 @@
 }
 
 .espaco{
-    width: 60px;
-    height: 60px;
+    width: 46px;
+    height: 70px;
     border: 2px solid cyan;
+}
+
+.celula{
+    width: 46px;
+    height: 70px;
 }
 
 .red{
@@ -27,4 +51,26 @@
     height: 30px;
     background: black;
     border-radius: 50%;
+}
+
+@media (min-width: 768px){
+    .espaco{
+        width: 100px;
+        height: 120px;
+    }
+
+    #footer{
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 1024px){
+    #container{
+        margin-top: 35px;
+    }
+    .espaco{
+        width: 131px;
+        height: 86px;
+
+    }
 }

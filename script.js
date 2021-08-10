@@ -35,27 +35,3 @@ function createLayout(){
 }
 createLayout();
 //Funções 
-
-//Event Listener
-const div = document.querySelector('.espaco');
-let change = true;
-
-div.addEventListener('click', () =>{
-
-    if(change === true){
-      const red = document.createElement('div');
-        red.classList.add = ('red');
-        div.appendChild(red);
-
-        change = false;
-    }
-
-    if(change === false){
-        const black = document.createElement('div');
-        red.classList.add = ('black');
-        div.appendChild(black);
-
-        change = true;
-    }
-});
-//Event Listener
