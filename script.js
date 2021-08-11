@@ -99,23 +99,11 @@ function victoryCondition(x, numero){
 
 //-----------------FIM CONDIÇÃO DE VITORIA
 //-----------------CONDIÇÃO DE EMPATE
-
+let clicks = 0
 function empate(x, numero){
-    let espacos= true;
-    for(let i=0; i<layoutGuides.length; i++){
-        for(let j=0; j<layoutGuides[i].length; j++){
-            if(layoutGuides[i][j] === "l"){
-                espacos = false
-            }
-        }
-    }
-
-    if(victoryCondition(x, numero) && espacos === true){
-        alert("EMPATE")
-        return true
-    }else{
-        return false
-    }
+ if(clicks === 42 && !victoryCondition(x, numero)){
+     alert('empate')
+ }
 }
 
 
@@ -154,8 +142,10 @@ function movingLayout(linha, coluna, boolean){
     
     if(boolean === true){
         layoutGuides[linha][coluna] = "P";
+        clicks++
     }else{
         layoutGuides[linha][coluna] = "E";
+        clicks++
 
     }
     for(let i=0; i<layoutGuides.length;i++){
@@ -194,16 +184,10 @@ const bloques = (cor, numero) => {
     }
 
 }
-//////////////////////
-const destino = () => {
-    const destin = document.getElementById("container")
-    // console.log(destin.children)
-    //let final = [];
-    //for(let i = 0; i < )
-}
+
 ////////////////////////
 mainContainer.addEventListener("click", (event) =>{
-    
+   
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
     let filaName = event.srcElement.parentNode.id;
@@ -217,7 +201,7 @@ mainContainer.addEventListener("click", (event) =>{
     bloques("red", numero);
     }
 
-    destino();
+
 })
 /*
  listener de click
