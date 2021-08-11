@@ -1,5 +1,6 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
+let img = ['./img/knight.png','./img/dragao.png'];
 //Variáveis
 
 //Layout
@@ -13,8 +14,6 @@ const layout = [
 ];
 
 let layoutGuides = [... layout];
-
-
 //Layout
 
 //Funções 
@@ -77,9 +76,16 @@ function diagonals(x){
 }
 
 function victoryCondition(x, numero){
-    if(horizontal(x) || vertical(x,numero) || diagonals(x) ) {
+    if(vertical(x,numero) === true) {
         console.log(x + " VENCEU")
     }
+    else if(horizontal(x) === true) {
+        console.log(x + " VENCEU")
+    }
+    else if(diagonals(x) === true) {
+        console.log(x + " VENCEU")
+    }
+
 }
 
 //-----------------FIM CONDIÇÃO DE VITORIA
@@ -102,8 +108,6 @@ function createLayout(){
             let print = layout[row][column];
             if(print === 'l'){
                 createDiv(container,'espaco');
-
-               // container.id="column"
             }
         }
     }
@@ -114,7 +118,6 @@ createLayout();
 let player1 = true;
 
 function movingLayout(linha, coluna, boolean){
-    // str.replace(regexp|substr, newSubStr|function)
     for(let i=0; i<layoutGuides.length;i++){
         layoutGuides[i] = layoutGuides[i].split('')
     }
@@ -131,18 +134,17 @@ function movingLayout(linha, coluna, boolean){
 
 }
 
-
-const bloques = (cor, numero) => {
+const bloques = (cor, numero, img) => {
     const coluna = document.querySelectorAll("#columna" + `${numero}`)
     
 
     for(let i=5; i>=0; i--){
         if(coluna[i].childElementCount === 0){
-            const blocos = document.createElement("div")
+            const blocos = document.createElement("img");
+            blocos.src = `${img}`
             blocos.classList.add(cor)
             coluna[i].appendChild(blocos)
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
-            // console.log(linha)
 
             if(player1 === true){
                 player1=false;
@@ -159,7 +161,7 @@ const bloques = (cor, numero) => {
     }
 
 }
-//////////////////////
+
 const position = () =>{
     let final = []
     const fila = document.getElementById("container")
@@ -183,13 +185,9 @@ const position = () =>{
                 }
             }
         }
-  console.table(final)
     return final
 }
 
-/*
- listener de click
- */
 mainContainer.addEventListener("click", (event) =>{
     
     let keyName = event.target.id;
@@ -199,12 +197,11 @@ mainContainer.addEventListener("click", (event) =>{
 
     if(player1 === true){
 
-        bloques("black", numero);
+        bloques("black", numero, img[0]);
     }else {
-    bloques("red", numero);
+    bloques("red", numero, img[1]);
     }
     position();
-    destino();
 })
 
 const lineas = () =>{
