@@ -185,36 +185,69 @@ const bloques = (cor, numero) => {
 
 }
 
-////////////////////////
+//////////////////////
+const position = () =>{
+    let final = []
+    const fila = document.getElementById("container")
+    let contFila = fila.childNodes
+    let content;
+    let filho;
+       for(let i = 0; i < contFila.length; i++){
+          final[i]=[];
+           content = contFila[i].childNodes;
+         for(let j = 0; j < content.length; j++){
+             filho = content[j].lastChild
+                if(content[j].childElementCount < 1){
+                    final[i][j] = 0
+                }
+             if(content[j].childElementCount > 0 && filho.className == "black"){
+                  final[i][j] = "black"
+                }
+                
+             if(content[j].childElementCount > 0 && filho.className == "red"){
+                  final[i][j] = "red"
+                }
+            }
+        }
+  console.table(final)
+    return final
+}
+
+/*
+ listener de click
+ */
+
 mainContainer.addEventListener("click", (event) =>{
    
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
     let filaName = event.srcElement.parentNode.id;
-  //  console.log(keyName)
-  //  console.log(filaName)
     const fila = document.getElementById(filaName)
-    // console.log(fila.id)
+
     if(player1 === true){
+
         bloques("black", numero);
     }else {
     bloques("red", numero);
     }
 
+    position();
+    destino();
 
 })
-/*
- listener de click
- */
+
 const lineas = () =>{
+    let state = false;
     const fila = document.getElementById("container")
     let contFila = fila.childNodes
     let bloques;
+    let conteudo;
+    let final = [];
     for(let i = 0; i < contFila.length; i++){
         contFila[i].id = "filera"+(i+1)
         bloques = contFila[i].childNodes
         for(let j = 0; j < bloques.length; j++){
-            bloques[j].id = "columna"+(j+1)
+            bloques[j].id = "columna"+(j+1);
         }
     }
 }
