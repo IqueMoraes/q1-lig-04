@@ -27,7 +27,7 @@ function horizontal(x){
     if(x !== true){
         string = "EEEE"
     }
-    for(let i=0; i<layoutGuides.length ; i++){
+    for(let i=0; i < layoutGuides.length ; i++){
         if(layoutGuides[i].indexOf(`${string}`) >= 0){
             return true
         }
@@ -47,7 +47,7 @@ function vertical(x,numero){
          string = "EEEE"
         }
         
-        if(arr[0].indexOf(`${string}`) >= 0){
+        if(arr.indexOf(`${string}`) >= 0){
             return true
         }else{
             return false
@@ -61,35 +61,49 @@ function diagonals(x){
     if(x !== true){
         string = "EEEE"
     }
-    
-    if(decreasingDiagonal().indexOf(`${string}`) >= 0){
-            return true
+    let arr = increasingDiagonal().concat(decreasingDiagonal())
+    for(let i=0; i < 12 ; i++){
+        if(arr[i].indexOf(`${string}`) >= 0){
+                return true
+        }
     }
-
-    else if(increasingDiagonal().indexOf(`${string}`) >= 0) {
-        return true
-    }
-    else{
     return false
-    }
+
 
 }
 
 function victoryCondition(x, numero){
-    if(vertical(x,numero) === true) {
-        console.log(x + " VENCEU")
+   let playerName = "Player 1"
+    if(x !== true){
+        playerName = "Player 2"
     }
-    else if(horizontal(x) === true) {
-        console.log(x + " VENCEU")
+
+    if(horizontal(x)){
+        alert(playerName + " venceu!")
+        return true
     }
-    else if(diagonals(x) === true) {
-        console.log(x + " VENCEU")
+    else if(vertical(x,numero)){
+        alert(playerName + " venceu!")
+        return true
+    }
+    else if(diagonals(x)) {
+        alert(playerName + " venceu!")
+        return true
+    }
+    else{
+        return false
     }
 
 }
 
 //-----------------FIM CONDIÇÃO DE VITORIA
-
+//-----------------CONDIÇÃO DE EMPATE
+let clicks = 0
+function empate(x, numero){
+ if(clicks === 42 && !victoryCondition(x, numero)){
+     alert('empate')
+ }
+}
 
 
 function createDiv(container,className){
@@ -118,17 +132,19 @@ createLayout();
 let player1 = true;
 
 function movingLayout(linha, coluna, boolean){
-    for(let i=0; i<layoutGuides.length;i++){
+    for(let i=0; i < layoutGuides.length;i++){
         layoutGuides[i] = layoutGuides[i].split('')
     }
     
     if(boolean === true){
         layoutGuides[linha][coluna] = "P";
+        clicks++
     }else{
         layoutGuides[linha][coluna] = "E";
+        clicks++
 
     }
-    for(let i=0; i<layoutGuides.length;i++){
+    for(let i=0; i < layoutGuides.length;i++){
         layoutGuides[i] = layoutGuides[i].join('')
     }
 
@@ -149,11 +165,13 @@ const bloques = (cor, numero, img) => {
             if(player1 === true){
                 player1=false;
                 movingLayout(linha-1, numero-1, true);
-                victoryCondition(true, numero-1)
+                victoryCondition(true, numero-1);
+                empate(true, numero-1);
             }else{
                 player1=true;
                 movingLayout(linha-1, numero-1, false);
-                victoryCondition(false, numero-1)
+                victoryCondition(false, numero-1);
+                empate(false, numero-1);
 
             }
             break
@@ -188,8 +206,14 @@ const position = () =>{
     return final
 }
 
+//  console.table(final)
+
+/*
+ listener de click
+ */
+
 mainContainer.addEventListener("click", (event) =>{
-    
+   
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
     let filaName = event.srcElement.parentNode.id;
@@ -201,7 +225,9 @@ mainContainer.addEventListener("click", (event) =>{
     }else {
     bloques("red", numero, img[1]);
     }
+
     position();
+
 })
 
 const lineas = () =>{
@@ -221,3 +247,24 @@ const lineas = () =>{
 }
 lineas();
 
+   function changeToOne() {
+        const s1 = document.getElementById("s1");
+        const s2 = document.getElementById("s2");
+
+        s2.disabled = true;
+        s1.disabled = false;
+      }
+
+      function changeToTwo() {
+        const s1 = document.getElementById("s1");
+        const s2 = document.getElementById("s2");
+
+        s1.disabled = true;
+        s2.disabled = false;
+      }
+
+      const activate1 = document.getElementById("activate1");
+      const activate2 = document.getElementById("activate2");
+
+      activate1.addEventListener("click", changeToOne);
+      activate2.addEventListener("click", changeToTwo);
