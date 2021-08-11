@@ -82,17 +82,41 @@ function victoryCondition(x, numero){
 
     if(horizontal(x)){
         alert(playerName + " venceu!")
+        return true
     }
     else if(vertical(x,numero)){
         alert(playerName + " venceu!")
+        return true
     }
     else if(diagonals(x)) {
         alert(playerName + " venceu!")
+        return true
+    }
+    else{
+        return false
     }
 }
 
 //-----------------FIM CONDIÇÃO DE VITORIA
+//-----------------CONDIÇÃO DE EMPATE
 
+function empate(x, numero){
+    let espacos= true;
+    for(let i=0; i<layoutGuides.length; i++){
+        for(let j=0; j<layoutGuides[i].length; j++){
+            if(layoutGuides[i][j] === "l"){
+                espacos = false
+            }
+        }
+    }
+
+    if(victoryCondition(x, numero) && espacos === true){
+        alert("EMPATE")
+        return true
+    }else{
+        return false
+    }
+}
 
 
 function createDiv(container,className){
@@ -156,11 +180,13 @@ const bloques = (cor, numero) => {
             if(player1 === true){
                 player1=false;
                 movingLayout(linha-1, numero-1, true);
-                victoryCondition(true, numero-1)
+                victoryCondition(true, numero-1);
+                empate(true, numero-1);
             }else{
                 player1=true;
                 movingLayout(linha-1, numero-1, false);
-                victoryCondition(false, numero-1)
+                victoryCondition(false, numero-1);
+                empate(false, numero-1);
 
             }
             break
