@@ -123,7 +123,6 @@ createLayout();
 let player1 = true;
 
 function movingLayout(linha, coluna, boolean){
-    // str.replace(regexp|substr, newSubStr|function)
     for(let i=0; i<layoutGuides.length;i++){
         layoutGuides[i] = layoutGuides[i].split('')
     }
@@ -151,7 +150,7 @@ const bloques = (cor, numero) => {
             blocos.classList.add(cor)
             coluna[i].appendChild(blocos)
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
-            // console.log(linha)
+
 
             if(player1 === true){
                 player1=false;
@@ -204,16 +203,16 @@ mainContainer.addEventListener("click", (event) =>{
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
     let filaName = event.srcElement.parentNode.id;
-    const fila = document.getElementById(filaName)
+   
 
     if(player1 === true){
 
-        bloques("black", numero);
+    bloques("black", numero);
     }else {
     bloques("red", numero);
     }
     position();
-    destino();
+
 })
 
 const lineas = () =>{
