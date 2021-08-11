@@ -48,7 +48,7 @@ function vertical(x,numero){
          string = "EEEE"
         }
         
-        if(arr[0].indexOf(`${string}`) >= 0){
+        if(arr.indexOf(`${string}`) >= 0){
             return true
         }else{
             return false
@@ -62,23 +62,32 @@ function diagonals(x){
     if(x !== true){
         string = "EEEE"
     }
-    
-    if(decreasingDiagonal().indexOf(`${string}`) >= 0){
-            return true
+    let arr = increasingDiagonal().concat(decreasingDiagonal())
+    for(let i=0; i<12 ; i++){
+        if(arr[i].indexOf(`${string}`) >= 0){
+                return true
+        }
     }
-
-    else if(increasingDiagonal().indexOf(`${string}`) >= 0) {
-        return true
-    }
-    else{
     return false
-    }
+
 
 }
 
 function victoryCondition(x, numero){
-    if(horizontal(x) || vertical(x,numero) || diagonals(x) ) {
-        console.log(x + " VENCEU")
+    let playerName = "Player 1"
+    if(x !== true){
+        playerName = "Player 2"
+    }
+
+
+    if(horizontal(x)){
+        alert(playerName + " venceu!")
+    }
+    else if(vertical(x,numero)){
+        alert(playerName + " venceu!")
+    }
+    else if(diagonals(x)) {
+        alert(playerName + " venceu!")
     }
 }
 
