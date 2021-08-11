@@ -1,3 +1,10 @@
+alert('O jogo segue as regras do Lig 04.')
+alert('Ganha o jogador que completar 4 peças em qualquer sentido (horizontal, vertical e diagonais).')
+alert("A partida se inicia com o Player 1 representado pelas peças pretas e em seguida com o Player 2 representado pelas peças vermelhas")
+alert('Caso todos os espaços sejam preenchidos e nenhuma fileira de 4 peças foi estabelecida, o jogo se dá por empate')
+alert('Boa partida!')
+
+
 //Variáveis
 const mainContainer = document.getElementById('container');
 //Variáveis
@@ -82,17 +89,29 @@ function victoryCondition(x, numero){
 
     if(horizontal(x)){
         alert(playerName + " venceu!")
+        return true
     }
     else if(vertical(x,numero)){
         alert(playerName + " venceu!")
+        return true
     }
     else if(diagonals(x)) {
         alert(playerName + " venceu!")
+        return true
+    }
+    else{
+        return false    
     }
 }
 
 //-----------------FIM CONDIÇÃO DE VITORIA
-
+//-----------------CONDIÇÃO DE EMPATE
+let clicks = 0
+function empate(x, numero){
+ if(clicks === 42 && !victoryCondition(x, numero)){
+     alert('empate')
+ }
+}
 
 
 function createDiv(container,className){
@@ -129,8 +148,10 @@ function movingLayout(linha, coluna, boolean){
     
     if(boolean === true){
         layoutGuides[linha][coluna] = "P";
+        clicks++
     }else{
         layoutGuides[linha][coluna] = "E";
+        clicks++
 
     }
     for(let i=0; i<layoutGuides.length;i++){
@@ -155,11 +176,13 @@ const bloques = (cor, numero) => {
             if(player1 === true){
                 player1=false;
                 movingLayout(linha-1, numero-1, true);
-                victoryCondition(true, numero-1)
+                victoryCondition(true, numero-1);
+                empate(true, numero-1);
             }else{
                 player1=true;
                 movingLayout(linha-1, numero-1, false);
-                victoryCondition(false, numero-1)
+                victoryCondition(false, numero-1);
+                empate(false, numero-1);
 
             }
             break
@@ -167,6 +190,7 @@ const bloques = (cor, numero) => {
     }
 
 }
+
 //////////////////////
 const position = () =>{
     let final = []
@@ -198,8 +222,9 @@ const position = () =>{
 /*
  listener de click
  */
+
 mainContainer.addEventListener("click", (event) =>{
-    
+   
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
     let filaName = event.srcElement.parentNode.id;
@@ -211,6 +236,7 @@ mainContainer.addEventListener("click", (event) =>{
     }else {
     bloques("red", numero);
     }
+
     position();
 
 })
