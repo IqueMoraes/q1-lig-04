@@ -18,6 +18,74 @@ let layoutGuides = [... layout];
 //Layout
 
 //Funções 
+
+
+//-----------CONDIÇÃO DE VITORIA
+
+
+function horizontal(x){
+    let string = "PPPP"
+    if(x !== true){
+        string = "EEEE"
+    }
+    for(let i=0; i<layoutGuides.length ; i++){
+        if(layoutGuides[i].indexOf(`${string}`) >= 0){
+            return true
+        }
+    }
+
+    return false
+
+}
+
+function vertical(x,numero){
+    let arr = layoutGuides.map(index => {
+        return index[numero]
+        }).join('')
+    
+        let string ="PPPP"
+        if(x !== true){
+         string = "EEEE"
+        }
+        
+        if(arr[0].indexOf(`${string}`) >= 0){
+            return true
+        }else{
+            return false
+        }
+}
+
+
+
+function diagonals(x){
+    let string = "PPPP"
+    if(x !== true){
+        string = "EEEE"
+    }
+    
+    if(decreasingDiagonal().indexOf(`${string}`) >= 0){
+            return true
+    }
+
+    else if(increasingDiagonal().indexOf(`${string}`) >= 0) {
+        return true
+    }
+    else{
+    return false
+    }
+
+}
+
+function victoryCondition(x, numero){
+    if(horizontal(x) || vertical(x,numero) || diagonals(x) ) {
+        console.log(x + " VENCEU")
+    }
+}
+
+//-----------------FIM CONDIÇÃO DE VITORIA
+
+
+
 function createDiv(container,className){
     const celula = document.createElement('div');
         celula.classList.add(className);
@@ -78,10 +146,12 @@ const bloques = (cor, numero) => {
 
             if(player1 === true){
                 player1=false;
-                movingLayout(linha-1, numero, true);
+                movingLayout(linha-1, numero-1, true);
+                victoryCondition(true, numero-1)
             }else{
                 player1=true;
-                movingLayout(linha-1, numero, false);
+                movingLayout(linha-1, numero-1, false);
+                victoryCondition(false, numero-1)
 
             }
             break
