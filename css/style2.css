@@ -1,25 +1,20 @@
-
-:root{
-    --back1: url(../img/Dungeon.jpg);
-    --back2: url(../img/Playa.jpeg);
-}
-
 body{
-    background-image:var(--back2);
+
+    background-image: url(../img/Playa.jpeg);
     background-size: cover;
 }
 
 #footer{
     text-align: center;
     font-size: 1em;
-    background: darkred;
+    background: #9d0a0e;
     margin-top: 16px;
     color: white;
+    display: flex;
+    justify-content: center;
 }
 
 #flex{
-    width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
 }
@@ -28,6 +23,8 @@ body{
     display: flex;
     flex-direction: column;
     margin-top: 100px;
+    background-color: rgba(0, 0, 0, 0.3);
+    
 }
 
 .container{
@@ -36,35 +33,47 @@ body{
 
 .espaco{
     width: 46px;
+
     height: 70px;
     border: 2px solid cyan;
+}
+
+.celula{
+    width: 46px;
+   
+    height: 60px;
+    border: 2px solid #9d0a0e;
     display:flex;
-    text-align:center;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
 }
 .jogo{
     width: 30px;
     height: 30px;
     border: 1px solid black; 
-    borde-radius: 50%;
+    border-radius: 50%;
 }
+
 .red{
-    width: 30px;
-    height: 30px;
-    background: darkred;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background: rgb(229 21 186 / 22%);
+    display: none;
 }
-
+.red1{
+    width: 100%;
+    height: 100%;
+}
 .black{
-    width: 30px;
-    height: 30px;
-    background: black;
-    border:1px solid white;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    display:none;
 }
-
+.black1{
+    width: 100%;
+    height: 100%;
+}
 @media (min-width: 768px){
     .espaco{
         width: 100px;
@@ -82,9 +91,7 @@ body{
     }
     .espaco{
         width: 131px;
-        height: 86px;
+        height: 76px;
 
     }
 }
-
-

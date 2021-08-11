@@ -1,6 +1,6 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
-let img = ['./img/knight.png','./img/dragao.png'];
+let img = ['./img/knight.png','./img/dragao.png','./img/caipirina.jpg', './img/cervejinha.jpg'];
 //Variáveis
 
 //Layout
@@ -150,16 +150,20 @@ function movingLayout(linha, coluna, boolean){
 
 }
 
-const bloques = (cor, numero, img) => {
+const bloques = (cor, numero, img, img2) => {
     const coluna = document.querySelectorAll("#columna" + `${numero}`)
     
 
     for(let i=5; i>=0; i--){
         if(coluna[i].childElementCount === 0){
             const blocos = document.createElement("img");
-            blocos.src = `${img}`
-            blocos.classList.add(cor)
+            const blocos2 = document.createElement("img");
+            blocos.src = `${img}`;
+            blocos2.src = `${img2}`;
+            blocos.classList.add(cor);
+            blocos2.classList.add(cor+"1");
             coluna[i].appendChild(blocos)
+            coluna[i].appendChild(blocos2)
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
             if(player1 === true){
@@ -211,7 +215,6 @@ const position = () =>{
 /*
  listener de click
  */
-
 mainContainer.addEventListener("click", (event) =>{
    
     let keyName = event.target.id;
@@ -221,9 +224,9 @@ mainContainer.addEventListener("click", (event) =>{
 
     if(player1 === true){
 
-        bloques("black", numero, img[0]);
+        bloques("black", numero, img[0],img[2]);
     }else {
-    bloques("red", numero, img[1]);
+    bloques("red", numero, img[1],img[3]);
     }
 
     position();
