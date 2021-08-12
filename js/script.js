@@ -279,7 +279,7 @@ const lineas = () =>{
     }
 }
 lineas();
-
+/*
    function changeToOne() {
         const s1 = document.getElementById("s1");
         const s2 = document.getElementById("s2");
@@ -301,3 +301,4 @@ lineas();
 
       activate1.addEventListener("click", changeToOne);
       activate2.addEventListener("click", changeToTwo);
+*/
