@@ -176,7 +176,7 @@ function movingLayout(linha, coluna, boolean){
 
 }
 
-const bloques = (cor, numero, img, img2) => {
+const bloques = (cor, numero, img) => {
     const coluna = document.querySelectorAll("#columna" + `${numero}`)
     
 
@@ -185,11 +185,8 @@ const bloques = (cor, numero, img, img2) => {
             const blocos = document.createElement("img");
             const blocos2 = document.createElement("img");
             blocos.src = `${img}`;
-            blocos2.src = `${img2}`;
             blocos.classList.add(cor);
-            blocos2.classList.add(cor+"1");
             coluna[i].appendChild(blocos)
-            coluna[i].appendChild(blocos2)
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
             if(player1 === true){
