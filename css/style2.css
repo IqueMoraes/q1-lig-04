@@ -50,14 +50,14 @@ header nav{
     width: 46px;
 
     height: 70px;
-    border: 2px solid cyan;
+    border: 2px solid #8f2803;
 }
 
 .celula{
     width: 46px;
    
     height: 60px;
-    border: 2px solid #9d0a0e;
+    border: 2px solid #946404;
     display:flex;
     justify-content:center;
     align-items:center;
