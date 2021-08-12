@@ -1,7 +1,7 @@
 body{
 
     background-image: url(./img/D&D.jpg);
-    background-size: cover;
+    background: cover;
 }
 
 button {
