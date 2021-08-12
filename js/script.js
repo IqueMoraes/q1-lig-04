@@ -2,50 +2,6 @@
 const mainContainer = document.getElementById('container');
 let img = ['./img/knight.png','./img/dragao.png'];
 //Variáveis
-function popupWelcome(){
-    const welcome = document.createElement('div');
-    winner.className = 'welcome__div';
-    mainContainer.appendChild(welcome);
-    const text = document.createElement('p');
-    text.className = 'welcome__text';
-    text.innerText = 'Parabéns! Você venceu a batalha DangeoLig-4';
-    const btn = document.createElement('button');
-    btn.className = 'welcome__btn';
-    btn.innerText = 'Continuar';
-    welcome.appendChild(text);
-    welcome.appendChild(btn);
-    // const img = document.createElement('img');
-    // img.className = 'welcome__img';
-    // img.src = './img/';
-    // winner.appendChild(img);
-
-    btn.addEventListener('click', popupPlayers());
-    
-    function popupPlayers(){
-    const players = document.createElement('div');
-    winner.className = 'players__div';
-    mainContainer.appendChild(welcome);
-    const text = document.createElement('p');
-    text.className = 'players__text';
-    text.innerText = 'Parabéns! Você venceu a batalha DangeoLig-4';
-    const btn1 = document.createElement('button');
-    btn.className = 'players__btn';
-    btn.innerText = 'Guerreiro';
-    const btn2 = document.createElement('button');
-    btn.className = 'players__btn';
-    btn.innerText = 'Dragão';
-    players.appendChild(text);
-    players.appendChild(btn1);
-    players.appendChild(btn2);
-
-    btn1.addEventListener('click', popupStart1());
-    btn2.addEventListener('click', popupStart2());
-    }
-   
-
-}
-
-
 //Layout
 const layout = [
     "lllllll",
@@ -58,8 +14,33 @@ const layout = [
 
 let layoutGuides = [... layout];
 //Layout
+//PopUp Inicial
 
-//Funções 
+const initialBtn = document.getElementById('introducao__btn');
+initialBtn.addEventListener('click',() =>{
+const initialDiv = document.getElementById('introducao');
+initialDiv.setAttribute('class', 'hidden');
+
+});
+
+const guerreiro = document.getElementById('guerreiro');
+guerreiro.addEventListener('click',() =>{
+const initialDiv2 = document.getElementById('introducao2');
+initialDiv2.setAttribute('class', 'hidden');
+
+player1 = true
+
+});
+
+const dragao = document.getElementById('dragao');
+dragao.addEventListener('click',() =>{
+const initialDiv2 = document.getElementById('introducao2');
+initialDiv2.setAttribute('class', 'hidden');
+
+player1 = false
+
+});
+
 
 
 //-----------CONDIÇÃO DE VITORIA
@@ -122,15 +103,15 @@ function victoryCondition(x, numero){
     }
 
     if(horizontal(x)){
-        popupWinner()
+        popupWinner(x)
         return true
     }
     else if(vertical(x,numero)){
-        popupWinner()
+        popupWinner(x)
         return true
     }
     else if(diagonals(x)) {
-        popupWinner()
+        popupWinner(x)
         return true
     }
     else{
@@ -139,29 +120,49 @@ function victoryCondition(x, numero){
 
 }
 
-function popupWinner(){
-    const winner = document.createElement('div');
-    winner.className = 'winner__div';
-    mainContainer.appendChild(winner);
-    const text = document.createElement('p');
-    text.className = 'winner__text';
-    text.innerText = 'Parabéns! Você venceu a batalha DangeoLig-4';
-    const btn = document.createElement('button');
-    btn.className = 'winner__btn';
-    btn.innerText = 'Nova batalha!';
-    winner.appendChild(text);
-    winner.appendChild(btn);
+
+function popupWinner(x){
+    const vitoria = new Audio();
+    vitoria.src = './audio/conquer.mp3';
+    vitoria.volume = 0.40;
+
+    let playerName = "Guerreiro"
     const img = document.createElement('img');
     img.className = 'winner__img';
     img.src = './img/win.png';
-    winner.appendChild(img);
+    if(x !== true){
+        playerName = "Dragão"
+        img.src = './img/dragonIcon.png';
+    }
+    const winner = document.createElement('div');
+    const text = document.createElement('p');
+    const btnDiv = document.createElement('div');
+    const btn = document.createElement('button');
 
+    winner.className = 'winner__div';
+    mainContainer.appendChild(winner);
+
+    text.className = 'winner__text';
+    text.innerText = `Parabéns, ${playerName}! Você venceu a batalha DangeoLig-4`;
+    winner.appendChild(text);
+    
+    btnDiv.className = 'winner__div__btn';
+    winner.appendChild(btnDiv)
+
+    btn.className = 'winner__btn';
+    btn.innerText = 'Nova batalha!';
+
+    btnDiv.appendChild(btn);
+    btnDiv.appendChild(img);
+
+    
+   
     btn.addEventListener('click', reset = () =>{
-        location.reload()
+        location.reload() 
     });
-
+    
+    vitoria.play();
 }
-
 //-----------------FIM CONDIÇÃO DE VITORIA
 //-----------------CONDIÇÃO DE EMPATE
 let clicks = 0
@@ -173,20 +174,28 @@ function empate(x, numero){
 
 function popupDraw(){
     const draw = document.createElement('div');
+    const text = document.createElement('p');
+    const btnDiv = document.createElement('div');
+    const btn = document.createElement('button');
+    const img = document.createElement('img');
+
     draw.className = 'draw__div';
     mainContainer.appendChild(draw);
-    const text = document.createElement('p');
+    
     text.className = 'draw__text';
-    text.innerText = 'Nem vencedor nem vencido... apenas empate';
-    const btn = document.createElement('button');
+    text.innerText = 'Nem vencedor nem vencido... apenas empate.';
+    draw.appendChild(text);
+    
+    btnDiv.className = 'draw__div__btn';
+    draw.appendChild(btnDiv);
+   
     btn.className = 'draw__btn';
     btn.innerText = 'Nova batalha!';
-    draw.appendChild(text);
-    draw.appendChild(btn);
-    const img = document.createElement('img');
+    btnDiv.appendChild(btn);
+    
     img.className = 'draw__img';
     img.src = './img/draw.png';
-    draw.appendChild(img);
+    btnDiv.appendChild(img);
 
     btn.addEventListener('click', reset = () =>{
         location.reload()
@@ -215,6 +224,7 @@ function createLayout(){
     }
 }
 createLayout();
+
 //Funções 
 
 let player1 = true;
