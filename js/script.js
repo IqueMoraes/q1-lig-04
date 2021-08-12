@@ -22,35 +22,6 @@ dragon.src = './audio/dragonroar.mp3';
 dragon.volume = 0.60;
 
 //Áudio
-//Áudio
-
-//Background Audio Button
-const backgroundAudio = document.getElementById('background-audio');
-const play = document.getElementById('playmusic_button');
-const pause = document.getElementById('pausemusic_button');
-const musicVolume = document.getElementById('volume_audio');
-const effectsVolume = document.getElementById('volume_audio');
-
-
-
-play.addEventListener('click', () =>{
-    backgroundAudio.volume = 0.30;
-    backgroundAudio.play();
-});
-
-pause.addEventListener('click', () =>{
-    backgroundAudio.pause();
-});
-musicVolume.addEventListener('change', (e) => {
-    backgroundAudio.volume = e.currentTarget.value /100;
-});
-effectsVolume.addEventListener('change', (e) => {
-    sword.volume = e.currentTarget.value /100;
-    dragon.volume = e.currentTarget.value /100;
-
-});
-//Background Audio Button
-
 
 //Layout
 const layout = [
@@ -91,7 +62,32 @@ player1 = false
 
 });
 
+//Background Audio Button
+const backgroundAudio = document.getElementById('background-audio');
+const play = document.getElementById('playmusic_button');
+const pause = document.getElementById('pausemusic_button');
+const musicVolume = document.getElementById('volume_audio');
+const effectsVolume = document.getElementById('volume_audio');
 
+
+
+play.addEventListener('click', () =>{
+    backgroundAudio.volume = 0.10;
+    backgroundAudio.play();
+});
+
+pause.addEventListener('click', () =>{
+    backgroundAudio.pause();
+});
+musicVolume.addEventListener('change', (e) => {
+    backgroundAudio.volume = e.currentTarget.value /100;
+});
+effectsVolume.addEventListener('change', (e) => {
+    sword.volume = e.currentTarget.value /100;
+    dragon.volume = e.currentTarget.value /100;
+
+});
+//Background Audio Button
 
 //Funções 
 //Personagem selecionado
@@ -237,7 +233,7 @@ function popupWinner(x){
     btn.addEventListener('click', reset = () =>{
         location.reload() 
     });
-    
+    backgroundAudio.pause();
     vitoria.play();
 }
 //-----------------FIM CONDIÇÃO DE VITORIA
