@@ -1,12 +1,16 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
-let img = ['./img/knight-selecionado.png','./img/dragao.png'];
+
 const divPlayer = document.getElementById("divActualPlayer")
 const playerName = document.getElementById("actualPlayerTextSpan")
 const playerFigure = document.getElementById("actualPlayerFigure")
 const playerImage = document.getElementById("actualPlayerImg")
 const textPlayer = ["Cavaleiro", "Dragão"]
+
+let img = ['./img/knight.png','./img/dragao.png','./img/espada.jpg', './img/orco.jpg'];
+
 //Variáveis
+
 
 //Áudio
 const sword = new Audio();
@@ -47,6 +51,7 @@ effectsVolume.addEventListener('change', (e) => {
 });
 //Background Audio Button
 
+
 //Layout
 const layout = [
     "lllllll",
@@ -59,8 +64,32 @@ const layout = [
 
 let layoutGuides = [... layout];
 //Layout
+//PopUp Inicial
 
+const initialBtn = document.getElementById('introducao__btn');
+initialBtn.addEventListener('click',() =>{
+const initialDiv = document.getElementById('introducao');
+initialDiv.setAttribute('class', 'hidden');
 
+});
+
+const guerreiro = document.getElementById('guerreiro');
+guerreiro.addEventListener('click',() =>{
+const initialDiv2 = document.getElementById('introducao2');
+initialDiv2.setAttribute('class', 'hidden');
+
+player1 = true
+
+});
+
+const dragao = document.getElementById('dragao');
+dragao.addEventListener('click',() =>{
+const initialDiv2 = document.getElementById('introducao2');
+initialDiv2.setAttribute('class', 'hidden');
+
+player1 = false
+
+});
 
 
 
@@ -73,6 +102,7 @@ function actualPlayer(){
     }else{
         playerImage.setAttribute("src", img[0])
         playerName.innerText = textPlayer[0]
+
 
     }
 }
@@ -129,6 +159,7 @@ function diagonals(x){
     for(let i=0; i < 12 ; i++){
         if(arr[i].indexOf(`${string}`) >= 0){
                 return true
+        mainContainer.removeEventListener("click", (event) =>{})
         }
     }
     return false
@@ -140,19 +171,25 @@ function victoryCondition(x, numero){
    let playerName = "Player 1"
     if(x !== true){
         playerName = "Player 2"
+        //const mainContainer.removeEventListener("click", (event) =>{})
+        mainContainer.removeEventListener("click", (event) =>{})
     }
 
     if(horizontal(x)){
-        alert(playerName + " venceu!")
+        popupWinner(x)
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
+
     }
     else if(vertical(x,numero)){
-        alert(playerName + " venceu!")
+        popupWinner(x)
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
     }
     else if(diagonals(x)) {
-        alert(playerName + " venceu!")
+        popupWinner(x)
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
     }
     else{
         return false
@@ -160,15 +197,88 @@ function victoryCondition(x, numero){
 
 }
 
+
+function popupWinner(x){
+    const vitoria = new Audio();
+    vitoria.src = './audio/conquer.mp3';
+    vitoria.volume = 0.40;
+
+    let playerName = "Guerreiro"
+    const img = document.createElement('img');
+    img.className = 'winner__img';
+    img.src = './img/win.png';
+    if(x !== true){
+        playerName = "Dragão"
+        img.src = './img/dragonIcon.png';
+    }
+    const winner = document.createElement('div');
+    const text = document.createElement('p');
+    const btnDiv = document.createElement('div');
+    const btn = document.createElement('button');
+
+    winner.className = 'winner__div';
+    mainContainer.appendChild(winner);
+
+    text.className = 'winner__text';
+    text.innerText = `Parabéns, ${playerName}! Você venceu a batalha DangeoLig-4`;
+    winner.appendChild(text);
+    
+    btnDiv.className = 'winner__div__btn';
+    winner.appendChild(btnDiv)
+
+    btn.className = 'winner__btn';
+    btn.innerText = 'Nova batalha!';
+
+    btnDiv.appendChild(btn);
+    btnDiv.appendChild(img);
+
+    
+   
+    btn.addEventListener('click', reset = () =>{
+        location.reload() 
+    });
+    
+    vitoria.play();
+}
 //-----------------FIM CONDIÇÃO DE VITORIA
 //-----------------CONDIÇÃO DE EMPATE
 let clicks = 0
 function empate(x, numero){
  if(clicks === 42 && !victoryCondition(x, numero)){
-     alert('empate')
+    popupDraw()
  }
 }
 
+function popupDraw(){
+    const draw = document.createElement('div');
+    const text = document.createElement('p');
+    const btnDiv = document.createElement('div');
+    const btn = document.createElement('button');
+    const img = document.createElement('img');
+
+    draw.className = 'draw__div';
+    mainContainer.appendChild(draw);
+    
+    text.className = 'draw__text';
+    text.innerText = 'Nem vencedor nem vencido... apenas empate.';
+    draw.appendChild(text);
+    
+    btnDiv.className = 'draw__div__btn';
+    draw.appendChild(btnDiv);
+   
+    btn.className = 'draw__btn';
+    btn.innerText = 'Nova batalha!';
+    btnDiv.appendChild(btn);
+    
+    img.className = 'draw__img';
+    img.src = './img/draw.png';
+    btnDiv.appendChild(img);
+
+    btn.addEventListener('click', reset = () =>{
+        location.reload()
+    });
+
+}
 
 function createDiv(container,className){
     const celula = document.createElement('div');
@@ -191,6 +301,7 @@ function createLayout(){
     }
 }
 createLayout();
+
 //Funções 
 
 let player1 = true;
@@ -214,16 +325,21 @@ function movingLayout(linha, coluna, boolean){
 
 }
 
-const bloques = (cor, numero, img) => {
+const bloques = (cor, numero, img, img2) => {
     const coluna = document.querySelectorAll("#columna" + `${numero}`)
     
 
     for(let i=5; i>=0; i--){
         if(coluna[i].childElementCount === 0){
             const blocos = document.createElement("img");
-            blocos.src = `${img}`
-            blocos.classList.add(cor)
+            const blocos2 = document.createElement("img");
+            blocos.src = `${img}`;
+            blocos2.src = `${img2}`;
+            blocos.classList.add(cor);
+            blocos2.classList.add(cor+'2');
             coluna[i].appendChild(blocos)
+            coluna[i].appendChild(blocos2)
+
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
             if(player1 === true){
@@ -275,7 +391,6 @@ const position = () =>{
 /*
  listener de click
  */
-
 mainContainer.addEventListener("click", (event) =>{
    
     let keyName = event.target.id;
@@ -284,11 +399,14 @@ mainContainer.addEventListener("click", (event) =>{
    actualPlayer();
 
     if(player1 === true){
-        bloques("black", numero, img[0]);
-        sword.play();
+
+        bloques("black", numero, img[0],img[2]);
+       sword.play();
     }else {
-    bloques("red", numero, img[1]);
+    bloques("red", numero, img[1],img[3]);
     dragon.play();
+
+
     }
 
     position();
@@ -311,8 +429,7 @@ const lineas = () =>{
     }
 }
 lineas();
-
-   /*function changeToOne() {
+   function changeToOne() {
         const s1 = document.getElementById("s1");
         const s2 = document.getElementById("s2");
 
@@ -332,4 +449,4 @@ lineas();
       const activate2 = document.getElementById("activate2");
 
       activate1.addEventListener("click", changeToOne);
-      activate2.addEventListener("click", changeToTwo);*/
+      activate2.addEventListener("click", changeToTwo);
