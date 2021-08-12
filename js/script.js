@@ -1,6 +1,6 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
-let img = ['./img/knight.png','./img/dragao.png','./img/caipirina.jpg', './img/cervejinha.jpg'];
+let img = ['./img/knight.png','./img/dragao.png','./img/espada.jpg', './img/orco.jpg'];
 //Variáveis
 
 //Áudio
@@ -91,6 +91,7 @@ function diagonals(x){
     for(let i=0; i < 12 ; i++){
         if(arr[i].indexOf(`${string}`) >= 0){
                 return true
+        mainContainer.removeEventListener("click", (event) =>{})
         }
     }
     return false
@@ -102,19 +103,25 @@ function victoryCondition(x, numero){
    let playerName = "Player 1"
     if(x !== true){
         playerName = "Player 2"
+        //const mainContainer.removeEventListener("click", (event) =>{})
+        mainContainer.removeEventListener("click", (event) =>{})
     }
 
     if(horizontal(x)){
         alert(playerName + " venceu!")
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
+
     }
     else if(vertical(x,numero)){
         alert(playerName + " venceu!")
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
     }
     else if(diagonals(x)) {
         alert(playerName + " venceu!")
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
     }
     else{
         return false
@@ -176,7 +183,7 @@ function movingLayout(linha, coluna, boolean){
 
 }
 
-const bloques = (cor, numero, img) => {
+const bloques = (cor, numero, img, img2) => {
     const coluna = document.querySelectorAll("#columna" + `${numero}`)
     
 
@@ -185,8 +192,12 @@ const bloques = (cor, numero, img) => {
             const blocos = document.createElement("img");
             const blocos2 = document.createElement("img");
             blocos.src = `${img}`;
+            blocos2.src = `${img2}`;
             blocos.classList.add(cor);
+            blocos2.classList.add(cor+'2');
             coluna[i].appendChild(blocos)
+            coluna[i].appendChild(blocos2)
+
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
             if(player1 === true){
