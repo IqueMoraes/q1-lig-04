@@ -325,20 +325,20 @@ function movingLayout(linha, coluna, boolean){
 
 }
 
-const bloques = (cor, numero, img, img2) => {
+const bloques = (cor, numero, img) => {
     const coluna = document.querySelectorAll("#columna" + `${numero}`)
     
 
     for(let i=5; i>=0; i--){
         if(coluna[i].childElementCount === 0){
             const blocos = document.createElement("img");
-            const blocos2 = document.createElement("img");
+
             blocos.src = `${img}`;
-            blocos2.src = `${img2}`;
+ç
             blocos.classList.add(cor);
-            blocos2.classList.add(cor+'2');
+         
             coluna[i].appendChild(blocos)
-            coluna[i].appendChild(blocos2)
+ 
 
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
