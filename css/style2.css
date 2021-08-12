@@ -1,7 +1,12 @@
+html{
+    background-color:black;
+    background-image: url(../img/Fundo1.jpg);
+}
 body{
-
-    background-image: url(../img/Playa.jpeg);
-    background-size: cover;
+    background-image: url(../img/fundo1.jpg);
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-position: center;
 }
 
 #footer{
@@ -22,11 +27,13 @@ body{
 #container{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
     background-color: rgba(0, 0, 0, 0.3);
 }
 header{
     padding:2rem
+}
+header nav{
+    margin-bottom:2rem;
 }
 #activate1{
     color: white;
@@ -67,20 +74,12 @@ header{
     height: 100%;
     background-size: cover;
     background: rgb(229 21 186 / 22%);
-    display: none;
-}
-.red1{
-    width: 100%;
-    height: 100%;
 }
 .black{
     width: 100%;
     height: 100%;
-    display:none;
-}
-.black1{
-    width: 100%;
-    height: 100%;
+    background-size: cover;
+    background: rgb(0 255 255 / 29%);
 }
 @media (min-width: 768px){
     .espaco{
