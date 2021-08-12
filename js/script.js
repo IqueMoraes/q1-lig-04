@@ -3,6 +3,32 @@ const mainContainer = document.getElementById('container');
 let img = ['./img/knight.png','./img/dragao.png','./img/caipirina.jpg', './img/cervejinha.jpg'];
 //Variáveis
 
+//Áudio
+const sword = new Audio();
+sword.src = './audio/sword.mp3';
+sword.volume = 0.40;
+
+const dragon = new Audio();
+dragon.src = './audio/dragonroar.mp3';
+dragon.volume = 0.60;
+//Áudio
+
+//Background Audio Button
+const play = document.querySelector('button');
+const pause = document.getElementById('pause');
+
+play.addEventListener('click', () =>{
+    const backgroundAudio = document.getElementById('background-audio');
+    backgroundAudio.volume = 0.30;
+    backgroundAudio.play();
+});
+
+pause.addEventListener('click', () =>{
+    const backgroundAudio = document.getElementById('background-audio');
+    backgroundAudio.pause();
+});
+//Background Audio Button
+
 //Layout
 const layout = [
     "lllllll",
@@ -225,8 +251,12 @@ mainContainer.addEventListener("click", (event) =>{
     if(player1 === true){
 
         bloques("black", numero, img[0],img[2]);
+       sword.play();
     }else {
     bloques("red", numero, img[1],img[3]);
+    dragon.play();
+
+
     }
 
     position();

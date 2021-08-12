@@ -4,6 +4,24 @@ body{
     background-size: cover;
 }
 
+button {
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.fa-pause-circle:before {
+    content: "\f28b";
+    font-size: 21px;
+    color: #9D0A0E;
+}
+
+.fa-play-circle:before {
+    content: "\f144";
+    font-size: 21px;
+    color: #9D0A0E;
+}
+
 #footer{
     text-align: center;
     font-size: 1em;
@@ -22,9 +40,8 @@ body{
 #container{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
     background-color: rgba(0, 0, 0, 0.6);
-    
+    margin-top: 100px;
 }
 
 .container{
@@ -33,20 +50,18 @@ body{
 
 .espaco{
     width: 46px;
-
+    border: 2px solid #9D0A0E;
     height: 70px;
-    border: 2px solid cyan;
 }
 
 .celula{
     width: 46px;
-   
     height: 60px;
-    border: 2px solid #9d0a0e;
     display:flex;
     justify-content:center;
     align-items:center;
 }
+
 .jogo{
     width: 30px;
     height: 30px;
@@ -81,8 +96,9 @@ body{
 
 @media (min-width: 1024px){
     #container{
-        margin-top: 35px;
+        margin-top: 0;
     }
+
     .espaco{
         width: 131px;
         height: 76px;
