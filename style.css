@@ -4,6 +4,24 @@ body{
     background-size: cover;
 }
 
+button {
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.fa-pause-circle:before {
+    content: "\f28b";
+    font-size: 21px;
+    color: #9D0A0E;
+}
+
+.fa-play-circle:before {
+    content: "\f144";
+    font-size: 21px;
+    color: #9D0A0E;
+}
+
 #footer{
     text-align: center;
     font-size: 1em;
@@ -22,9 +40,8 @@ body{
 #container{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
     background-color: rgba(0, 0, 0, 0.6);
-    
+    margin-top: 100px;
 }
 
 .container{
@@ -79,8 +96,9 @@ body{
 
 @media (min-width: 1024px){
     #container{
-        margin-top: 35px;
+        margin-top: 0;
     }
+
     .espaco{
         width: 131px;
         height: 76px;

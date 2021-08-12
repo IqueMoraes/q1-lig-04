@@ -11,10 +11,23 @@ sword.volume = 0.40;
 const dragon = new Audio();
 dragon.src = './audio/dragonroar.mp3';
 dragon.volume = 0.60;
-
-const backgroundAudio = document.getElementById('background-audio');
-backgroundAudio.volume = 0.30;
 //Áudio
+
+//Background Audio Button
+const play = document.querySelector('button');
+const pause = document.getElementById('pause');
+
+play.addEventListener('click', () =>{
+    const backgroundAudio = document.getElementById('background-audio');
+    backgroundAudio.volume = 0.30;
+    backgroundAudio.play();
+});
+
+pause.addEventListener('click', () =>{
+    const backgroundAudio = document.getElementById('background-audio');
+    backgroundAudio.pause();
+});
+//Background Audio Button
 
 //Layout
 const layout = [

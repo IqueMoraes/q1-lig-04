@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="favicon/Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
     <link rel="stylesheet" href="./style/reset.css">
     <link rel="stylesheet" href="style.css">    
@@ -11,13 +14,15 @@
     <title>Lig-4</title>
 </head>
 <body>
+    <audio autoplay loop id="background-audio">
+        <source src="audio/bensound-epic.mp3" type="audio/mpeg">
+      </audio>
+      <button><i class="fas fa-play-circle"></i></button>
+      <button id="pause"><i class="fas fa-pause-circle"></i></button>
     <div id="flex">
         <div id="container"></div>
     </div>
     <footer id="footer">Feito por: Nicholas dos Santos, Willian Santos, Ique Moraes e Glen Escobar</footer>
-    <audio autoplay loop id="background-audio">
-      <source src="audio/bensound-epic.mp3" type="audio/mpeg">
-    </audio>
     <script src="./js/diagonals.js"></script>
     <script src="./js/script.js"></script>
 </body>
