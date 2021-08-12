@@ -137,6 +137,7 @@ h1{
 nav{
     text-align: center;
 }
+
 #footer{
     text-align: center;
     font-size: 1em;
@@ -344,7 +345,9 @@ nav{
     background-size: cover;
     background: rgb(159, 50, 15, 0.4);
 }
-
+footer{
+    position:relative
+}
 @media (min-width: 768px){
     .espaco{
         width: 100px;
@@ -354,6 +357,9 @@ nav{
     #footer{
         font-size: 1.5em;
     }
+}
+footer{
+    position:absolute;
 }
 
 @media (min-width: 1024px){
@@ -374,7 +380,7 @@ nav{
 
     #footer{
         width: 100%;
-        position: absolute;
+        position: relative;
         bottom: 0;
     }
     .winner__div{
