@@ -9,8 +9,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="favicon/Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
     <link rel="stylesheet" href="./style/reset.css">
-
-  
     <link rel="stylesheet" href="style.css">  
     <link rel="shortcut icon" href="Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
     
@@ -21,21 +19,24 @@
     <header>
         <!-- botao para pausar jogo -->
     <h1>DungeonLigForIf</h1>
+    <section id="titulo">
+
+    </section>
   <section>
+
    
       <audio autoplay loop id="background-audio">
         <source src="audio/bensound-epic.mp3" type="audio/mpeg">
       </audio>
       <button><i class="fas fa-play-circle"></i></button>
       <button id="pause"><i class="fas fa-pause-circle"></i></button>
+
   </section>
-  
-        <section id="botao_menu">
-            <button id="menu_button"><i class="fas fa-bars"></i></button>
-        </section>
+  <div id="caixa_header">
+        
         <section id="configuracoes">
     
-            <nav>
+            <nav id="nav_som">
                 <h3>Som</h3>
 
                 <ul id="lista_botoes">
@@ -51,7 +52,7 @@
                 </ul>
                 
             </nav>
-            <nav>
+            <nav id="nav_reiniciar">
                 <h3>Reiniciar batalha</h3>
                 <ul>
                 <li><a href=""><button id="refresh_button" class="nav__button"><i class="fas fa-redo-alt"></i></button></a></li>
@@ -72,6 +73,8 @@
 
             </div>
         </section>
+
+    </div>
         <!-- adicionar e retirar som -->
     </header>
     

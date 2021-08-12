@@ -334,11 +334,11 @@ const bloques = (cor, numero, img) => {
             const blocos = document.createElement("img");
 
             blocos.src = `${img}`;
-ç
+
             blocos.classList.add(cor);
          
             coluna[i].appendChild(blocos)
- 
+
 
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
@@ -353,7 +353,7 @@ const bloques = (cor, numero, img) => {
                 victoryCondition(false, numero-1);
                 empate(false, numero-1);
 
-            }
+            } 
             break
         }
     }
