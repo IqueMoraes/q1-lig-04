@@ -4,52 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="favicon/Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
     <link rel="stylesheet" href="./style/reset.css">
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="./css/alvoHover.css">  -->
     <link rel="shortcut icon" href="Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
+    
+
     <title>Lig-4</title>
 </head>
 <body>
+
     <header>
         <!-- botao para pausar jogo -->
-        <section>
-        
+        <section id="botao_menu">
+            <button id="menu_button"><i class="fas fa-bars"></i></button>
+        </section>
+        <section id="configuracoes">
+    
             <nav>
+                <h3>Som</h3>
+
                 <ul id="lista_botoes">
-                    <li><a href=""><button id="pause_button" class="nav__button"><i class="fa-solid fa-pause"></i></button></a></li>
-                    <li><a href=""><button id="pausemusic_button" class="nav__button"></button></a></li>
-                    <li><a href=""><button id="refresh_button" class="nav__button"></button></a></li>
-                    
+                    <li><a href=""><button id="playmusic_button" class="nav__button"><i class="fas fa-play"></i></button></a></li>
+                    <li><a href=""><button id="pausemusic_button" class="nav__button"><i class="fas fa-pause"></i></button></a></li>
+                    <!-- bug no som dos efeitos não para com o pause do da música -->  
                 </ul>
                 <ul id="lista_volumes">
-                    <li><label for="volume_audio" class="volume__labels">Volume da música:</label><input id="volume_audio" class="range__volume" type="range" ></input></li>
-                    <li><label for="volume_effects" class="volume__labels">Volume de Efeitos:</label><input id="volume_effects" class="range__volume" type="range"></input></li>
+                    <li><label for="volume_audio" class="volume__labels">Música</label><input id="volume_audio" class="range__volume" type="range"  ></input></li>
+                    <li><label for="volume_effects" class="volume__labels">Efeitos</label><input id="volume_effects" class="range__volume" type="range"></input></li>
+                    
 
                 </ul>
+                
             </nav>
+            <nav>
+                <h3>Reiniciar batalha</h3>
+                <ul>
+                <li><a href=""><button id="refresh_button" class="nav__button"><i class="fas fa-redo-alt"></i></button></a></li>
+
+            </ul></nav>
 
         </section>
-        <section>
+        
+        <section id="actualPlayerSection">
+            <div id="actualPlayerText"><h2>Ataque do <span id="actualPlayerTextSpan">Guerreiro</span></h2></div>
+
             <div id="divActualPlayer">
                 <div id="actualPlayerFigure">
                     <figure id="actualPlayerFigure">
                         <img id="actualPlayerImg" src="./img/knight.png" alt="">
                     </figure>
                 </div>
-                <div id="actualPlayerText"><h2>Vez do jogador <span id="actualPlayerTextSpan">Cavaleiro</span>.</h2></div>
 
             </div>
         </section>
         <!-- adicionar e retirar som -->
     </header>
+    
+    <audio autoplay loop id="background-audio">
+        <!-- <source src="audio/bensound-epic.mp3" type="audio/mpeg"> -->
+      </audio>
     <div id="flex">
         <div id="container"></div>
     </div>
     <footer id="footer">Feito por: Nicholas dos Santos, Willian Santos, Ique Moraes e Glen Escobar</footer>
-    <audio autoplay loop id="background-audio">
-      <source src="audio/bensound-epic.mp3" type="audio/mpeg">
-    </audio>
     <script src="./js/diagonals.js"></script>
     <script src="./js/script.js"></script>
 </body>

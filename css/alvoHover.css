@@ -1,0 +1,4 @@
+#columna1:hover, #columna1{
+    background-image: url(./img/alvo.png);
+    background-size: cover;
+}

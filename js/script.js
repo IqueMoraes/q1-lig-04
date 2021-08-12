@@ -1,6 +1,6 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
-let img = ['./img/knight.png','./img/dragao.png'];
+let img = ['./img/knight-selecionado.png','./img/dragao.png'];
 const divPlayer = document.getElementById("divActualPlayer")
 const playerName = document.getElementById("actualPlayerTextSpan")
 const playerFigure = document.getElementById("actualPlayerFigure")
@@ -17,21 +17,35 @@ const dragon = new Audio();
 dragon.src = './audio/dragonroar.mp3';
 dragon.volume = 0.60;
 
-const backgroundAudio = document.getElementById('background-audio');
-// backgroundAudio.volume = 0.30;
+//Áudio
+//Áudio
 
+//Background Audio Button
+const backgroundAudio = document.getElementById('background-audio');
+const play = document.getElementById('playmusic_button');
+const pause = document.getElementById('pausemusic_button');
 const musicVolume = document.getElementById('volume_audio');
+const effectsVolume = document.getElementById('volume_audio');
+
+
+
+play.addEventListener('click', () =>{
+    backgroundAudio.volume = 0.30;
+    backgroundAudio.play();
+});
+
+pause.addEventListener('click', () =>{
+    backgroundAudio.pause();
+});
 musicVolume.addEventListener('change', (e) => {
     backgroundAudio.volume = e.currentTarget.value /100;
 });
-
-const effectsVolume = document.getElementById('volume_audio');
 effectsVolume.addEventListener('change', (e) => {
     sword.volume = e.currentTarget.value /100;
     dragon.volume = e.currentTarget.value /100;
 
 });
-//Áudio
+//Background Audio Button
 
 //Layout
 const layout = [
@@ -63,6 +77,12 @@ function actualPlayer(){
     }
 }
 
+
+//refresh do jogo
+const refresh = document.getElementById('refresh_button')
+refresh.addEventListener('click', reset = () =>{
+    location.reload()
+});
 //CONDIÇÃO DE VITORIA
 
 
@@ -206,7 +226,6 @@ const bloques = (cor, numero, img) => {
             coluna[i].appendChild(blocos)
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
-
             if(player1 === true){
                 player1=false;
                 movingLayout(linha-1, numero-1, true);
@@ -261,7 +280,7 @@ mainContainer.addEventListener("click", (event) =>{
    
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
-    let filaName = event.srcElement.parentNode.id;
+   
    actualPlayer();
 
     if(player1 === true){
