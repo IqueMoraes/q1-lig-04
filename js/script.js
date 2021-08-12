@@ -3,6 +3,7 @@ const mainContainer = document.getElementById('container');
 let img = ['./img/knight.png','./img/dragao.png','./img/espada.jpg', './img/orco.jpg'];
 //Variáveis
 
+
 //Áudio
 const sword = new Audio();
 sword.src = './audio/sword.mp3';
@@ -29,6 +30,7 @@ pause.addEventListener('click', () =>{
 });
 //Background Audio Button
 
+
 //Layout
 const layout = [
     "lllllll",
@@ -41,8 +43,33 @@ const layout = [
 
 let layoutGuides = [... layout];
 //Layout
+//PopUp Inicial
 
-//Funções 
+const initialBtn = document.getElementById('introducao__btn');
+initialBtn.addEventListener('click',() =>{
+const initialDiv = document.getElementById('introducao');
+initialDiv.setAttribute('class', 'hidden');
+
+});
+
+const guerreiro = document.getElementById('guerreiro');
+guerreiro.addEventListener('click',() =>{
+const initialDiv2 = document.getElementById('introducao2');
+initialDiv2.setAttribute('class', 'hidden');
+
+player1 = true
+
+});
+
+const dragao = document.getElementById('dragao');
+dragao.addEventListener('click',() =>{
+const initialDiv2 = document.getElementById('introducao2');
+initialDiv2.setAttribute('class', 'hidden');
+
+player1 = false
+
+});
+
 
 
 //-----------CONDIÇÃO DE VITORIA
@@ -108,18 +135,18 @@ function victoryCondition(x, numero){
     }
 
     if(horizontal(x)){
-        alert(playerName + " venceu!")
+        popupWinner(x)
         return true
         mainContainer.removeEventListener("click", (event) =>{})
 
     }
     else if(vertical(x,numero)){
-        alert(playerName + " venceu!")
+        popupWinner(x)
         return true
         mainContainer.removeEventListener("click", (event) =>{})
     }
     else if(diagonals(x)) {
-        alert(playerName + " venceu!")
+        popupWinner(x)
         return true
         mainContainer.removeEventListener("click", (event) =>{})
     }
@@ -129,15 +156,88 @@ function victoryCondition(x, numero){
 
 }
 
+
+function popupWinner(x){
+    const vitoria = new Audio();
+    vitoria.src = './audio/conquer.mp3';
+    vitoria.volume = 0.40;
+
+    let playerName = "Guerreiro"
+    const img = document.createElement('img');
+    img.className = 'winner__img';
+    img.src = './img/win.png';
+    if(x !== true){
+        playerName = "Dragão"
+        img.src = './img/dragonIcon.png';
+    }
+    const winner = document.createElement('div');
+    const text = document.createElement('p');
+    const btnDiv = document.createElement('div');
+    const btn = document.createElement('button');
+
+    winner.className = 'winner__div';
+    mainContainer.appendChild(winner);
+
+    text.className = 'winner__text';
+    text.innerText = `Parabéns, ${playerName}! Você venceu a batalha DangeoLig-4`;
+    winner.appendChild(text);
+    
+    btnDiv.className = 'winner__div__btn';
+    winner.appendChild(btnDiv)
+
+    btn.className = 'winner__btn';
+    btn.innerText = 'Nova batalha!';
+
+    btnDiv.appendChild(btn);
+    btnDiv.appendChild(img);
+
+    
+   
+    btn.addEventListener('click', reset = () =>{
+        location.reload() 
+    });
+    
+    vitoria.play();
+}
 //-----------------FIM CONDIÇÃO DE VITORIA
 //-----------------CONDIÇÃO DE EMPATE
 let clicks = 0
 function empate(x, numero){
  if(clicks === 42 && !victoryCondition(x, numero)){
-     alert('empate')
+    popupDraw()
  }
 }
 
+function popupDraw(){
+    const draw = document.createElement('div');
+    const text = document.createElement('p');
+    const btnDiv = document.createElement('div');
+    const btn = document.createElement('button');
+    const img = document.createElement('img');
+
+    draw.className = 'draw__div';
+    mainContainer.appendChild(draw);
+    
+    text.className = 'draw__text';
+    text.innerText = 'Nem vencedor nem vencido... apenas empate.';
+    draw.appendChild(text);
+    
+    btnDiv.className = 'draw__div__btn';
+    draw.appendChild(btnDiv);
+   
+    btn.className = 'draw__btn';
+    btn.innerText = 'Nova batalha!';
+    btnDiv.appendChild(btn);
+    
+    img.className = 'draw__img';
+    img.src = './img/draw.png';
+    btnDiv.appendChild(img);
+
+    btn.addEventListener('click', reset = () =>{
+        location.reload()
+    });
+
+}
 
 function createDiv(container,className){
     const celula = document.createElement('div');
@@ -160,6 +260,7 @@ function createLayout(){
     }
 }
 createLayout();
+
 //Funções 
 
 let player1 = true;

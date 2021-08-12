@@ -15,7 +15,10 @@
     <title>Lig-4</title>
 </head>
 <body>
+
+    
 <header>
+  <h1>DungeonLigForIf</h1>
     <nav>
           <a id="activate1" href="#">Fight</a>
           <a id="activate2" href="#">Castell</a>
@@ -26,9 +29,35 @@
       <button><i class="fas fa-play-circle"></i></button>
       <button id="pause"><i class="fas fa-pause-circle"></i></button>
  </header>
+
+      <audio id= 'clickVitoria'>
+        <source src="./img/Click2.mp3" type='audio/mpeg'>
+      </audio>
+
+      <div id="introducao2">
+        <p>A grande batalha continua! Você deve escolher em qual exército irá lutar, dos humanos ou dos dragões.
+        </p>
+        <figure id="guerreiro">
+          <img src="./img/knight.png" alt="Guerreiro com armadura prateada e capa bordô.">
+        </figure>
+        <figure id="dragao">
+          <img src="./img/dragao.png" alt="Dragão nas cores cinzas, rosa e roxo.">
+        </figure>
+      </div>
+
+    <div id= "introducao">
+      <p>Bem vindo ao DangeoLig-4!!!</p>
+      <p>O jogo é simples, o jogador que completar primeiro uma ligação de 4 peças,<br>
+        Na vertical, horizontal ou diagonal, vence!
+     </p>
+     <button id="introducao__btn">Continuar</button>
+    </div>
+   
+
     <div id="flex">
         <div id="container"></div>
     </div>
+    
     <footer id="footer">Feito por: Nicholas dos Santos, Willian Santos, Ique Moraes e Glen Escobar</footer>
     <script src="./js/diagonals.js"></script>
     <script src="./js/script.js"></script>
