@@ -3,10 +3,10 @@ html{
 }
 body{
 
-    background-image: url(../img/D&D.jpg);
-    background-size:100%;
+    /* background-image: url(../img/D&D.jpg); */
+    /* background-size:100%;
     background-repeat:no-repeat;
-    background-position: center;
+    background-position: center; */
 }
 
 #footer{

@@ -338,7 +338,7 @@ const bloques = (cor, numero, img, img2) => {
             blocos.classList.add(cor);
             blocos2.classList.add(cor+'2');
             coluna[i].appendChild(blocos)
-            coluna[i].appendChild(blocos2)
+            // coluna[i].appendChild(blocos2)
 
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
@@ -353,7 +353,7 @@ const bloques = (cor, numero, img, img2) => {
                 victoryCondition(false, numero-1);
                 empate(false, numero-1);
 
-            }
+            } 
             break
         }
     }
