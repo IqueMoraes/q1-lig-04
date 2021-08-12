@@ -1,6 +1,5 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
-
 const divPlayer = document.getElementById("divActualPlayer")
 const playerName = document.getElementById("actualPlayerTextSpan")
 const playerFigure = document.getElementById("actualPlayerFigure")
@@ -8,7 +7,11 @@ const playerImage = document.getElementById("actualPlayerImg")
 const textPlayer = ["Cavaleiro", "Dragão"]
 
 let img = ['./img/knight.png','./img/dragao.png','./img/espada.jpg', './img/orco.jpg'];
+let player1 = true;
 
+const initialBtn = document.getElementById('introducao__btn');
+const guerreiro = document.getElementById('guerreiro');
+const dragao = document.getElementById('dragao');
 //Variáveis
 
 
@@ -35,31 +38,29 @@ const layout = [
 
 let layoutGuides = [... layout];
 //Layout
+
+
 //PopUp Inicial
 
-const initialBtn = document.getElementById('introducao__btn');
+
 initialBtn.addEventListener('click',() =>{
 const initialDiv = document.getElementById('introducao');
 initialDiv.setAttribute('class', 'hidden');
-
 });
 
-const guerreiro = document.getElementById('guerreiro');
 guerreiro.addEventListener('click',() =>{
-const initialDiv2 = document.getElementById('introducao2');
+const initialDiv2 = document.querySelector('.introducao2');
 initialDiv2.setAttribute('class', 'hidden');
-
-player1 = true
+player1 = true;
+initialPlayer();
 
 });
 
-const dragao = document.getElementById('dragao');
 dragao.addEventListener('click',() =>{
-const initialDiv2 = document.getElementById('introducao2');
+const initialDiv2 = document.querySelector('.introducao2');
 initialDiv2.setAttribute('class', 'hidden');
-
-player1 = false
-
+player1 = false;
+initialPlayer();
 });
 
 //Background Audio Button
@@ -91,6 +92,15 @@ effectsVolume.addEventListener('change', (e) => {
 
 //Funções 
 //Personagem selecionado
+function initialPlayer(){
+    if(player1 === true){
+        playerImage.setAttribute("src", img[0])
+        playerName.innerText = textPlayer[1]
+    }else{
+        playerImage.setAttribute("src", img[1])
+        playerName.innerText = textPlayer[0]
+    }
+}
 function actualPlayer(){
     if(player1 === true){
         playerImage.setAttribute("src", img[1])
@@ -98,8 +108,6 @@ function actualPlayer(){
     }else{
         playerImage.setAttribute("src", img[0])
         playerName.innerText = textPlayer[0]
-
-
     }
 }
 
@@ -122,7 +130,6 @@ function horizontal(x){
             return true
         }
     }
-
     return false
 
 }
@@ -143,8 +150,6 @@ function vertical(x,numero){
             return false
         }
 }
-
-
 
 function diagonals(x){
     let string = "PPPP"
@@ -300,7 +305,6 @@ createLayout();
 
 //Funções 
 
-let player1 = true;
 
 function movingLayout(linha, coluna, boolean){
     for(let i=0; i < layoutGuides.length;i++){
@@ -313,7 +317,6 @@ function movingLayout(linha, coluna, boolean){
     }else{
         layoutGuides[linha][coluna] = "E";
         clicks++
-
     }
     for(let i=0; i < layoutGuides.length;i++){
         layoutGuides[i] = layoutGuides[i].join('')
