@@ -9,6 +9,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="favicon/Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
     <link rel="stylesheet" href="./style/reset.css">
+
     <link id="s1"rel="stylesheet" href="./css/style1.css">    
     <link id="s2"rel="stylesheet" href="./css/style2.css" disabled = "true">    
     <link rel="stylesheet" href="style.css">  
@@ -18,9 +19,10 @@
 </head>
 <body>
 
-    
-<header>
-  <h1>DungeonLigForIf</h1>
+    <header>
+        <!-- botao para pausar jogo -->
+    <h1>DungeonLigForIf</h1>
+  <section>
     <nav>
           <a id="activate1" href="#">Fight</a>
           <a id="activate2" href="#">Castell</a>
@@ -30,13 +32,62 @@
       </audio>
       <button><i class="fas fa-play-circle"></i></button>
       <button id="pause"><i class="fas fa-pause-circle"></i></button>
- </header>
+  </section>
+  
+        <section id="botao_menu">
+            <button id="menu_button"><i class="fas fa-bars"></i></button>
+        </section>
+        <section id="configuracoes">
+    
+            <nav>
+                <h3>Som</h3>
+
+                <ul id="lista_botoes">
+                    <li><a href=""><button id="playmusic_button" class="nav__button"><i class="fas fa-play"></i></button></a></li>
+                    <li><a href=""><button id="pausemusic_button" class="nav__button"><i class="fas fa-pause"></i></button></a></li>
+                    <!-- bug no som dos efeitos não para com o pause do da música -->  
+                </ul>
+                <ul id="lista_volumes">
+                    <li><label for="volume_audio" class="volume__labels">Música</label><input id="volume_audio" class="range__volume" type="range"  ></input></li>
+                    <li><label for="volume_effects" class="volume__labels">Efeitos</label><input id="volume_effects" class="range__volume" type="range"></input></li>
+                    
+
+                </ul>
+                
+            </nav>
+            <nav>
+                <h3>Reiniciar batalha</h3>
+                <ul>
+                <li><a href=""><button id="refresh_button" class="nav__button"><i class="fas fa-redo-alt"></i></button></a></li>
+
+            </ul></nav>
+
+        </section>
+        
+        <section id="actualPlayerSection">
+            <div id="actualPlayerText"><h2>Ataque do <span id="actualPlayerTextSpan">Guerreiro</span></h2></div>
+
+            <div id="divActualPlayer">
+                <div id="actualPlayerFigure">
+                    <figure id="actualPlayerFigure">
+                        <img id="actualPlayerImg" src="./img/knight.png" alt="">
+                    </figure>
+                </div>
+
+            </div>
+        </section>
+        <!-- adicionar e retirar som -->
+    </header>
+    
+    <audio autoplay loop id="background-audio">
+        <!-- <source src="audio/bensound-epic.mp3" type="audio/mpeg"> -->
+      </audio>
 
       <audio id= 'clickVitoria'>
         <source src="./img/Click2.mp3" type='audio/mpeg'>
       </audio>
 
-      <div id="introducao2">
+ <div id="introducao2">
         <p>A grande batalha continua! Você deve escolher em qual exército irá lutar, dos humanos ou dos dragões.
         </p>
         <figure id="guerreiro">
@@ -54,7 +105,6 @@
      </p>
      <button id="introducao__btn">Continuar</button>
     </div>
-   
 
     <div id="flex">
         <div id="container"></div>

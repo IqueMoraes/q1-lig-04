@@ -1,6 +1,14 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
+
+const divPlayer = document.getElementById("divActualPlayer")
+const playerName = document.getElementById("actualPlayerTextSpan")
+const playerFigure = document.getElementById("actualPlayerFigure")
+const playerImage = document.getElementById("actualPlayerImg")
+const textPlayer = ["Cavaleiro", "Dragão"]
+
 let img = ['./img/knight.png','./img/dragao.png','./img/espada.jpg', './img/orco.jpg'];
+
 //Variáveis
 
 
@@ -12,21 +20,34 @@ sword.volume = 0.40;
 const dragon = new Audio();
 dragon.src = './audio/dragonroar.mp3';
 dragon.volume = 0.60;
+
+//Áudio
 //Áudio
 
 //Background Audio Button
-const play = document.querySelector('button');
-const pause = document.getElementById('pause');
+const backgroundAudio = document.getElementById('background-audio');
+const play = document.getElementById('playmusic_button');
+const pause = document.getElementById('pausemusic_button');
+const musicVolume = document.getElementById('volume_audio');
+const effectsVolume = document.getElementById('volume_audio');
+
+
 
 play.addEventListener('click', () =>{
-    const backgroundAudio = document.getElementById('background-audio');
     backgroundAudio.volume = 0.30;
     backgroundAudio.play();
 });
 
 pause.addEventListener('click', () =>{
-    const backgroundAudio = document.getElementById('background-audio');
     backgroundAudio.pause();
+});
+musicVolume.addEventListener('change', (e) => {
+    backgroundAudio.volume = e.currentTarget.value /100;
+});
+effectsVolume.addEventListener('change', (e) => {
+    sword.volume = e.currentTarget.value /100;
+    dragon.volume = e.currentTarget.value /100;
+
 });
 //Background Audio Button
 
@@ -72,7 +93,27 @@ player1 = false
 
 
 
-//-----------CONDIÇÃO DE VITORIA
+//Funções 
+//Personagem selecionado
+function actualPlayer(){
+    if(player1 === true){
+        playerImage.setAttribute("src", img[1])
+        playerName.innerText = textPlayer[1]
+    }else{
+        playerImage.setAttribute("src", img[0])
+        playerName.innerText = textPlayer[0]
+
+
+    }
+}
+
+
+//refresh do jogo
+const refresh = document.getElementById('refresh_button')
+refresh.addEventListener('click', reset = () =>{
+    location.reload()
+});
+//CONDIÇÃO DE VITORIA
 
 
 function horizontal(x){
@@ -354,8 +395,8 @@ mainContainer.addEventListener("click", (event) =>{
    
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
-    let filaName = event.srcElement.parentNode.id;
-    const fila = document.getElementById(filaName)
+   
+   actualPlayer();
 
     if(player1 === true){
 

@@ -6,23 +6,125 @@ body{
     background-repeat: no-repeat;
 }
 
+header{
+    display: flex;
+    justify-content: space-around;
+    padding: 5vw 10vw;
+}
+header section{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+}
+#botao_menu{
+    display: none;
+}
+
+
+
 button {
     cursor: pointer;
+
+}
+#lista_botoes{
+    display: flex;
+    justify-content: flex-start;
+}
+nav{
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: fit-content;
+    padding: 5%;
+    border-radius: 3px;
+    
+}
+.nav__button{
+    margin-right: 10px;;
+}
+nav h3{
+    color: #FFFF;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.fas{
+    color:#ffff;
+}
+#lista_volumes li{
+    color: #FFFF;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+#lista_volumes li input{
+    all:unset;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 10px 0;
+    display: inline-block;
+    height: 2px;
+    border-radius: 0px;
+    background-color: #c84439;
+    outline: none;
+    
+}
+input[type=range]::-webkit-slider-thumb{
     border-radius: 50%;
-    padding: 0;
 }
 
-.fa-pause-circle:before {
-    content: "\f28b";
-    font-size: 21px;
-    color: #9D0A0E;
+#volume_audio::-webkit-slider-thumb{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgb(211, 12, 12);
 }
 
-.fa-play-circle:before {
+.nav__button{
+    height: 2rem;
+    width: 2rem;
+    background-color: #c73439;
+    border: 2px solid #9D0A0E;
+    border-radius: 2px;
+}
+
+#playmusic_button{
     content: "\f144";
-    font-size: 21px;
-    color: #9D0A0E;
 }
+#pausemusic_button{
+    content: "\f28b";
+}
+
+#actualPlayerSection{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  
+}
+#actualPlayerText {
+    color: #FFFF;
+    font-weight: bold;
+    width: 200px;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+    padding-top: 5%;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+#actualPlayerFigure{
+    height: 200px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid #9D0A0E;
+    border-radius: 2px;
+}
+#actualPlayerImg {
+    height: 100%;
+    padding: 0 auto;
+}
+
+
+
 
 h1{
     text-align: center;
@@ -198,6 +300,7 @@ nav{
     flex-direction: column;
     margin: 100px;
     background-color: rgba(0, 0, 0, 0.6);
+
 }
 
 .container{
@@ -209,6 +312,8 @@ nav{
     border: 2px solid #9D0A0E;
     height: 70px;
 }
+
+
 
 .celula{
     width: 46px;
@@ -229,14 +334,15 @@ nav{
     width: 100%;
     height: 100%;
     background-size: cover;
-    background: rgb(229 21 186 / 22%);
+    background: rgb(13, 20, 139, 0.22);
 }
+
 
 .black{
     width: 100%;
     height: 100%;
     background-size: cover;
-    background: rgb(0 255 255 / 29%);
+    background: rgb(159, 50, 15, 0.4);
 }
 
 @media (min-width: 768px){
@@ -251,14 +357,18 @@ nav{
 }
 
 @media (min-width: 1024px){
-    
+
+    header{
+        padding: 5vw 15vw;
+    }
+
     #container{
         margin-top: 0;
     }
 
     .espaco{
-        width: 131px;
-        height: 76px;
+        width: 10vw;
+        height: 10vw;
 
     }
 
