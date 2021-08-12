@@ -1,6 +1,6 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
-let img = ['./img/knight.png','./img/dragao.png','./img/caipirina.jpg', './img/cervejinha.jpg'];
+let img = ['./img/knight.png','./img/dragao.png','./img/espada.jpg', './img/orco.jpg'];
 //Variáveis
 
 //Áudio
@@ -176,7 +176,7 @@ function movingLayout(linha, coluna, boolean){
 
 }
 
-const bloques = (cor, numero, img) => {
+const bloques = (cor, numero, img, img2) => {
     const coluna = document.querySelectorAll("#columna" + `${numero}`)
     
 
@@ -185,8 +185,12 @@ const bloques = (cor, numero, img) => {
             const blocos = document.createElement("img");
             const blocos2 = document.createElement("img");
             blocos.src = `${img}`;
+            blocos2.src = `${img2}`;
             blocos.classList.add(cor);
+            blocos2.classList.add(cor+'2');
             coluna[i].appendChild(blocos)
+            coluna[i].appendChild(blocos2)
+
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
 
             if(player1 === true){
