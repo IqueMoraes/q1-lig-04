@@ -24,7 +24,15 @@ body{
     flex-direction: column;
     margin-top: 100px;
     background-color: rgba(0, 0, 0, 0.3);
-    
+}
+header{
+    padding:2rem
+}
+#activate1{
+    color: white;
+}
+#activate2{
+    display:none
 }
 
 .container{
