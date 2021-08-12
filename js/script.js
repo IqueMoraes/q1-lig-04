@@ -3,6 +3,19 @@ const mainContainer = document.getElementById('container');
 let img = ['./img/knight.png','./img/dragao.png'];
 //Variáveis
 
+//Áudio
+const sword = new Audio();
+sword.src = './audio/sword.mp3';
+sword.volume = 0.40;
+
+const dragon = new Audio();
+dragon.src = './audio/dragonroar.mp3';
+dragon.volume = 0.60;
+
+const backgroundAudio = document.getElementById('background-audio');
+backgroundAudio.volume = 0.30;
+//Áudio
+
 //Layout
 const layout = [
     "lllllll",
@@ -222,8 +235,10 @@ mainContainer.addEventListener("click", (event) =>{
     if(player1 === true){
 
         bloques("black", numero, img[0]);
+        sword.play();
     }else {
     bloques("red", numero, img[1]);
+    dragon.play();
     }
 
     position();
@@ -247,7 +262,7 @@ const lineas = () =>{
 }
 lineas();
 
-   function changeToOne() {
+   /*function changeToOne() {
         const s1 = document.getElementById("s1");
         const s2 = document.getElementById("s2");
 
@@ -267,4 +282,4 @@ lineas();
       const activate2 = document.getElementById("activate2");
 
       activate1.addEventListener("click", changeToOne);
-      activate2.addEventListener("click", changeToTwo);
+      activate2.addEventListener("click", changeToTwo);*/
