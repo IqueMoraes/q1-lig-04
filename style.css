@@ -1,17 +1,147 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
 
+body{
     background-image: url(./img/D&D.jpg);
     background-size: cover;
 }
 
+h1{
+    text-align: center;
+    color: #771518;
+    font-size: 40px;
+    font-family: 'Gowun Batang', serif;
+    margin-top: 40px;
+    padding: 8px;
+}
+nav{
+    text-align: center;
+}
 #footer{
     text-align: center;
     font-size: 1em;
-    background: #9d0a0e;
-    margin-top: 16px;
+    font-weight: 800;
+    background: #771518;
+    font-family: 'Gowun Batang', serif;
     color: white;
     display: flex;
     justify-content: center;
+}
+.welcome__div{
+    position: absolute;
+    left: 33vw;
+    right: 30vw;
+    top: 60vh;
+    width: 35vw;
+    height: 30vw;
+    background-color:  rgba(189, 212, 119 , 0.89);
+    border-radius: 25px;
+    border: solid 2px #b8860b;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.welcome__text{
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 30px;
+}
+.welcome_btn{
+    
+    border: solid 2px gray;
+    padding: 12px;
+    color: black;
+    background-color: beige;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    
+}
+.welcome_img{
+    display: flex;
+    margin-top: 30px;
+}
+.welcome_btn:hover{
+    background-color: black;
+    color: blanchedalmond;
+}
+
+.winner__div{
+    position: absolute;
+    left: 33vw;
+    right: 30vw;
+    top: 60vh;
+    width: 35vw;
+    height: 30vw;
+    background-color:  rgba(189, 212, 119 , 0.89);
+    border-radius: 25px;
+    border: solid 2px #b8860b;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.winner__text{
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 30px;
+}
+.winner_btn{
+    
+    border: solid 2px gray;
+    padding: 12px;
+    color: black;
+    background-color: beige;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    
+}
+.winner_img{
+    display: flex;
+    margin-top: 30px;
+}
+.winner_btn:hover{
+    background-color: black;
+    color: blanchedalmond;
+}
+.draw__div{
+    position: absolute;
+    left: 33vw;
+    right: 30vw;
+    top: 60vh;
+    width: 35vw;
+    height: 30vw;
+    background-color:rgba(239, 194, 194, 0.89);
+    border-radius: 25px;
+    border: solid 2px #df5f3f;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.draw__text{
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 30px;
+}
+.draw_btn{
+    
+    border: solid 2px gray;
+    padding: 12px;
+    color: black;
+    background-color: beige;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    
+}
+.draw_btn:hover{
+    background-color: black;
+    color: blanchedalmond;
 }
 
 #flex{
@@ -22,7 +152,7 @@ body{
 #container{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin: 100px;
     background-color: rgba(0, 0, 0, 0.6);
     
 }
@@ -80,6 +210,7 @@ body{
 }
 
 @media (min-width: 1024px){
+    
     #container{
         margin-top: 35px;
     }
@@ -88,4 +219,80 @@ body{
         height: 76px;
 
     }
+    #footer{
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+    .winner__div{
+        position: absolute;
+        left: 40vw;
+        right: 40vw;
+        top: 30vh;
+        width: 20vw;
+        height: 20vh;
+        background-color:  rgba(189, 212, 119 , 0.89);
+        border-radius: 25px;
+        border: solid 2px #b8860b;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .winner__text{
+        text-align: center;
+        font-size: 20px;
+        padding-bottom: 30px;
+    }
+    .winner_btn{
+        
+        border: solid 2px gray;
+        color: black;
+        background-color: beige;
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+    }
+    .winner_btn:hover{
+        background-color: black;
+        color: blanchedalmond;
+    }
+    .draw__div{
+        position: absolute;
+        left: 35vw;
+        right: 35vw;
+        top: 30vh;
+        width: 30vw;
+        height: 30vh;
+        background-color:rgba(239, 194, 194, 0.89);
+        border-radius: 25px;
+        border: solid 2px #df5f3f;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .draw__text{
+        text-align: center;
+        font-size: 20px;
+        padding-bottom: 30px;
+    }
+    .draw_btn{
+        
+        border: solid 2px gray;
+        padding: 12px;
+        color: black;
+        background-color: beige;
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+        
+    }
+    .draw_btn:hover{
+        background-color: black;
+        color: blanchedalmond;
+    }
+    
 }
