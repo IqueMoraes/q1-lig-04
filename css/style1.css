@@ -1,7 +1,12 @@
+html{
+    background-color:black;
+}
 body{
 
     background-image: url(../img/D&D.jpg);
-    background-size: cover;
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-position: center;
 }
 
 #footer{
@@ -22,7 +27,6 @@ body{
 #container{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
     background-color: rgba(0, 0, 0, 0.6);
 }
 header{
