@@ -91,6 +91,7 @@ function diagonals(x){
     for(let i=0; i < 12 ; i++){
         if(arr[i].indexOf(`${string}`) >= 0){
                 return true
+        mainContainer.removeEventListener("click", (event) =>{})
         }
     }
     return false
@@ -102,19 +103,25 @@ function victoryCondition(x, numero){
    let playerName = "Player 1"
     if(x !== true){
         playerName = "Player 2"
+        //const mainContainer.removeEventListener("click", (event) =>{})
+        mainContainer.removeEventListener("click", (event) =>{})
     }
 
     if(horizontal(x)){
         alert(playerName + " venceu!")
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
+
     }
     else if(vertical(x,numero)){
         alert(playerName + " venceu!")
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
     }
     else if(diagonals(x)) {
         alert(playerName + " venceu!")
         return true
+        mainContainer.removeEventListener("click", (event) =>{})
     }
     else{
         return false
