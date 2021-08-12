@@ -4,17 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
-    <link rel="stylesheet" href="reset.css">
+    <link rel="shortcut icon" href="favicon/Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style/reset.css">
     <link rel="stylesheet" href="style.css">    
+    <link rel="shortcut icon" href="Icons8-Windows-8-Computer-Hardware-Joystick.ico" type="image/x-icon">
     <title>Lig-4</title>
 </head>
 <body>
+    <header>
+        <!-- botao para pausar jogo -->
+        <section>
+        
+            <nav>
+                <ul id="lista_botoes">
+                    <li><a href=""><button id="pause_button" class="nav__button"><i class="fa-solid fa-pause"></i></button></a></li>
+                    <li><a href=""><button id="pausemusic_button" class="nav__button"></button></a></li>
+                    <li><a href=""><button id="refresh_button" class="nav__button"></button></a></li>
+                    
+                </ul>
+                <ul id="lista_volumes">
+                    <li><label for="volume_audio" class="volume__labels">Volume da música:</label><input id="volume_audio" class="range__volume" type="range" ></input></li>
+                    <li><label for="volume_effects" class="volume__labels">Volume de Efeitos:</label><input id="volume_effects" class="range__volume" type="range"></input></li>
+
+                </ul>
+            </nav>
+
+        </section>
+        <section>
+            <div id="divActualPlayer">
+                <div id="actualPlayerFigure">
+                    <figure id="actualPlayerFigure">
+                        <img id="actualPlayerImg" src="./img/knight.png" alt="">
+                    </figure>
+                </div>
+                <div id="actualPlayerText"><h2>Vez do jogador <span id="actualPlayerTextSpan">Cavaleiro</span>.</h2></div>
+
+            </div>
+        </section>
+        <!-- adicionar e retirar som -->
+    </header>
     <div id="flex">
         <div id="container"></div>
     </div>
     <footer id="footer">Feito por: Nicholas dos Santos, Willian Santos, Ique Moraes e Glen Escobar</footer>
-    <script src="diagonals.js"></script>
-    <script src="script.js"></script>
+    <audio autoplay loop id="background-audio">
+      <source src="audio/bensound-epic.mp3" type="audio/mpeg">
+    </audio>
+    <script src="./js/diagonals.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

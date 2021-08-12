@@ -1,6 +1,37 @@
 //Variáveis
 const mainContainer = document.getElementById('container');
+let img = ['./img/knight.png','./img/dragao.png'];
+const divPlayer = document.getElementById("divActualPlayer")
+const playerName = document.getElementById("actualPlayerTextSpan")
+const playerFigure = document.getElementById("actualPlayerFigure")
+const playerImage = document.getElementById("actualPlayerImg")
+const textPlayer = ["Cavaleiro", "Dragão"]
 //Variáveis
+
+//Áudio
+const sword = new Audio();
+sword.src = './audio/sword.mp3';
+sword.volume = 0.40;
+
+const dragon = new Audio();
+dragon.src = './audio/dragonroar.mp3';
+dragon.volume = 0.60;
+
+const backgroundAudio = document.getElementById('background-audio');
+// backgroundAudio.volume = 0.30;
+
+const musicVolume = document.getElementById('volume_audio');
+musicVolume.addEventListener('change', (e) => {
+    backgroundAudio.volume = e.currentTarget.value /100;
+});
+
+const effectsVolume = document.getElementById('volume_audio');
+effectsVolume.addEventListener('change', (e) => {
+    sword.volume = e.currentTarget.value /100;
+    dragon.volume = e.currentTarget.value /100;
+
+});
+//Áudio
 
 //Layout
 const layout = [
@@ -13,14 +44,26 @@ const layout = [
 ];
 
 let layoutGuides = [... layout];
-
-
 //Layout
 
+
+
+
+
 //Funções 
+//Personagem selecionado
+function actualPlayer(){
+    if(player1 === true){
+        playerImage.setAttribute("src", img[1])
+        playerName.innerText = textPlayer[1]
+    }else{
+        playerImage.setAttribute("src", img[0])
+        playerName.innerText = textPlayer[0]
 
+    }
+}
 
-//-----------CONDIÇÃO DE VITORIA
+//CONDIÇÃO DE VITORIA
 
 
 function horizontal(x){
@@ -28,7 +71,7 @@ function horizontal(x){
     if(x !== true){
         string = "EEEE"
     }
-    for(let i=0; i<layoutGuides.length ; i++){
+    for(let i=0; i < layoutGuides.length ; i++){
         if(layoutGuides[i].indexOf(`${string}`) >= 0){
             return true
         }
@@ -63,7 +106,7 @@ function diagonals(x){
         string = "EEEE"
     }
     let arr = increasingDiagonal().concat(decreasingDiagonal())
-    for(let i=0; i<12 ; i++){
+    for(let i=0; i < 12 ; i++){
         if(arr[i].indexOf(`${string}`) >= 0){
                 return true
         }
@@ -74,25 +117,37 @@ function diagonals(x){
 }
 
 function victoryCondition(x, numero){
-    let playerName = "Player 1"
+   let playerName = "Player 1"
     if(x !== true){
         playerName = "Player 2"
     }
 
-
     if(horizontal(x)){
         alert(playerName + " venceu!")
+        return true
     }
     else if(vertical(x,numero)){
         alert(playerName + " venceu!")
+        return true
     }
     else if(diagonals(x)) {
         alert(playerName + " venceu!")
+        return true
     }
+    else{
+        return false
+    }
+
 }
 
 //-----------------FIM CONDIÇÃO DE VITORIA
-
+//-----------------CONDIÇÃO DE EMPATE
+let clicks = 0
+function empate(x, numero){
+ if(clicks === 42 && !victoryCondition(x, numero)){
+     alert('empate')
+ }
+}
 
 
 function createDiv(container,className){
@@ -111,8 +166,6 @@ function createLayout(){
             let print = layout[row][column];
             if(print === 'l'){
                 createDiv(container,'espaco');
-
-               // container.id="column"
             }
         }
     }
@@ -123,30 +176,32 @@ createLayout();
 let player1 = true;
 
 function movingLayout(linha, coluna, boolean){
-    for(let i=0; i<layoutGuides.length;i++){
+    for(let i=0; i < layoutGuides.length;i++){
         layoutGuides[i] = layoutGuides[i].split('')
     }
     
     if(boolean === true){
         layoutGuides[linha][coluna] = "P";
+        clicks++
     }else{
         layoutGuides[linha][coluna] = "E";
+        clicks++
 
     }
-    for(let i=0; i<layoutGuides.length;i++){
+    for(let i=0; i < layoutGuides.length;i++){
         layoutGuides[i] = layoutGuides[i].join('')
     }
 
 }
 
-
-const bloques = (cor, numero) => {
+const bloques = (cor, numero, img) => {
     const coluna = document.querySelectorAll("#columna" + `${numero}`)
     
 
     for(let i=5; i>=0; i--){
         if(coluna[i].childElementCount === 0){
-            const blocos = document.createElement("div")
+            const blocos = document.createElement("img");
+            blocos.src = `${img}`
             blocos.classList.add(cor)
             coluna[i].appendChild(blocos)
             let linha = parseInt(coluna[i].parentElement.id[coluna[i].parentElement.id.length-1])
@@ -155,11 +210,13 @@ const bloques = (cor, numero) => {
             if(player1 === true){
                 player1=false;
                 movingLayout(linha-1, numero-1, true);
-                victoryCondition(true, numero-1)
+                victoryCondition(true, numero-1);
+                empate(true, numero-1);
             }else{
                 player1=true;
                 movingLayout(linha-1, numero-1, false);
-                victoryCondition(false, numero-1)
+                victoryCondition(false, numero-1);
+                empate(false, numero-1);
 
             }
             break
@@ -167,7 +224,7 @@ const bloques = (cor, numero) => {
     }
 
 }
-//////////////////////
+
 const position = () =>{
     let final = []
     const fila = document.getElementById("container")
@@ -191,26 +248,30 @@ const position = () =>{
                 }
             }
         }
-  console.table(final)
     return final
 }
+
+//  console.table(final)
 
 /*
  listener de click
  */
+
 mainContainer.addEventListener("click", (event) =>{
-    
+   
     let keyName = event.target.id;
     let numero = parseInt(keyName[keyName.length -1])
     let filaName = event.srcElement.parentNode.id;
-   
+   actualPlayer();
 
     if(player1 === true){
-
-    bloques("black", numero);
+        bloques("black", numero, img[0]);
+        sword.play();
     }else {
-    bloques("red", numero);
+    bloques("red", numero, img[1]);
+    dragon.play();
     }
+
     position();
 
 })
@@ -232,3 +293,24 @@ const lineas = () =>{
 }
 lineas();
 
+   /*function changeToOne() {
+        const s1 = document.getElementById("s1");
+        const s2 = document.getElementById("s2");
+
+        s2.disabled = true;
+        s1.disabled = false;
+      }
+
+      function changeToTwo() {
+        const s1 = document.getElementById("s1");
+        const s2 = document.getElementById("s2");
+
+        s1.disabled = true;
+        s2.disabled = false;
+      }
+
+      const activate1 = document.getElementById("activate1");
+      const activate2 = document.getElementById("activate2");
+
+      activate1.addEventListener("click", changeToOne);
+      activate2.addEventListener("click", changeToTwo);*/

@@ -1,0 +1,90 @@
+
+:root{
+    --back1: url(../img/Dungeon.jpg);
+    --back2: url(../img/Playa.jpeg);
+}
+
+body{
+    background-image:var(--back2);
+    background-size: cover;
+}
+
+#footer{
+    text-align: center;
+    font-size: 1em;
+    background: darkred;
+    margin-top: 16px;
+    color: white;
+}
+
+#flex{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.container{
+    display: flex;
+}
+
+.espaco{
+    width: 46px;
+    height: 70px;
+    border: 2px solid cyan;
+    display:flex;
+    text-align:center;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+.jogo{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black; 
+    borde-radius: 50%;
+}
+.red{
+    width: 30px;
+    height: 30px;
+    background: darkred;
+    border-radius: 50%;
+}
+
+.black{
+    width: 30px;
+    height: 30px;
+    background: black;
+    border:1px solid white;
+    border-radius: 50%;
+}
+
+@media (min-width: 768px){
+    .espaco{
+        width: 100px;
+        height: 120px;
+    }
+
+    #footer{
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 1024px){
+    #container{
+        margin-top: 35px;
+    }
+    .espaco{
+        width: 131px;
+        height: 86px;
+
+    }
+}
+
+
