@@ -40,11 +40,9 @@
                 <ul id="lista_botoes">
                     <li><button id="playmusic_button" class="nav__button"><i class="fas fa-play"></i></button></li>
                     <li><button id="pausemusic_button" class="nav__button"><i class="fas fa-pause"></i></button></li>
-                    <!-- bug no som dos efeitos não para com o pause do da música -->  
                 </ul>
                 <ul id="lista_volumes">
-                    <li><label for="volume_audio" class="volume__labels">Música</label><input id="volume_audio" class="range__volume" type="range"  ></input></li>
-                    <li><label for="volume_effects" class="volume__labels">Efeitos</label><input id="volume_effects" class="range__volume" type="range"></input></li>
+                    <li><label for="volume_audio" class="volume__labels">Volume</label><input id="volume_audio" class="range__volume" type="range"  ></input></li>
                     
 
                 </ul>
@@ -56,7 +54,7 @@
                 <li><a href=""><button id="refresh_button" class="nav__button"><i class="fas fa-redo-alt"></i></button></a></li>
 
             </ul></nav>
-            <audio autoplay id="background-audio">
+            <audio id="background-audio">
                 <source src="audio/bensound-epic.mp3" type="audio/mpeg">
             </audio>
         </section>
@@ -75,7 +73,6 @@
         </section>
 
     </div>
-        <!-- adicionar e retirar som -->
     </header>
     
     
