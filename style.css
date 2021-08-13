@@ -143,13 +143,16 @@ input[type=range]::-webkit-slider-thumb{
 
 h1{
     text-align: center;
-    color: #771518;
+    color: #ce0f15;
     font-size: 40px;
     font-weight: bold;
     font-family: 'Gowun Batang', serif;
     margin-top: 40px;
     padding: 8px;
-    text-shadow: 2px 1px 10px rgb(0 0 0);
+    text-shadow: 2px 1px 10px rgb(241 241 241);
+}
+
+
 }
 nav{
     text-align: center;
